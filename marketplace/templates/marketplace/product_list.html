@@ -1,26 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ITMarket</title>
-</head>
-<body>
-    <h1>ITMarket</h1>
+{% extends "marketplace/base.html" %}
 
-    {% if products %}
-        <ul>
-            {% for product in products %}
-                <li>
-                    <strong>{{ product.title }}</strong><br>
-                    {{ product.description }}<br>
-                    £{{ product.price }}<br>
-                    Seller: {{ product.owner.username }}
-                </li>
-                <hr>
-            {% endfor %}
-        </ul>
-    {% else %}
+{% block content %}
+<h1 class="mb-4">Marketplace</h1>
+
+<div class="row">
+    {% for product in products %}
+        <div class="col-md-4 mb-4">
+            <div class="card p-3 h-100">
+                <h5 class="fw-bold">{{ product.title }}</h5>
+                <p>{{ product.description }}</p>
+                <p class="fw-semibold">£{{ product.price }}</p>
+                <small>Seller: {{ product.owner.username }}</small>
+            </div>
+        </div>
+    {% empty %}
         <p>No products available.</p>
-    {% endif %}
-</body>
-</html>
+    {% endfor %}
+</div>
+{% endblock %}
