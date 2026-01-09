@@ -1,2 +1,26 @@
-<h1>Marketplace</h1>
-<p>Welcome to ITMarket</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ITMarket</title>
+</head>
+<body>
+    <h1>ITMarket</h1>
+
+    {% if products %}
+        <ul>
+            {% for product in products %}
+                <li>
+                    <strong>{{ product.title }}</strong><br>
+                    {{ product.description }}<br>
+                    £{{ product.price }}<br>
+                    Seller: {{ product.owner.username }}
+                </li>
+                <hr>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No products available.</p>
+    {% endif %}
+</body>
+</html>
