@@ -1,5 +1,5 @@
 ## Live Site (Heroku)
-Deployed application: https://itmarket-app.herokuapp.com/
+Deployed application: https://itmarket-app-208bb526531b.herokuapp.com/
 
 ITMarket – AI-Augmented Full-Stack Django Web Application
 Author: Stuart Carey
