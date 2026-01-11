@@ -1,3 +1,6 @@
+## Live Site (Heroku)
+Deployed application: https://itmarket-app.herokuapp.com/
+
 ITMarket – AI-Augmented Full-Stack Django Web Application
 Author: Stuart Carey
 Programme: AI-Augmented Full-Stack Bootcamp — Individual Capstone Project
