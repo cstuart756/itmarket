@@ -195,6 +195,23 @@ Could Have
 •	Admin dashboard
 •	Product image uploads
 Development followed an Agile workflow using incremental delivery, GitHub issue tracking, and feature-based commits.
+## Agile Project Management
+
+This project was managed using Agile methodology with a Kanban workflow.
+
+All development tasks were tracked using GitHub Issues and GitHub Projects, following MoSCoW prioritisation and Epic-based organisation.
+
+Kanban Board:
+https://github.com/cstuart756/itmarket/projects
+
+The backlog includes:
+- Infrastructure and setup tasks
+- Authentication and security features
+- Marketplace CRUD implementation
+- Cloud media integration
+- Automated testing
+- Deployment and production hardening
+
 ________________________________________
 Automated Testing
 Testing Strategy
