@@ -38,6 +38,88 @@ Typography
 •	Google Font: Poppins
 •	Used consistently across headings and body text
 The interface follows a mobile-first design approach and is implemented using the Bootstrap 5 responsive grid system.
+
+Wireframes (Design Documentation)
+
+The following wireframes were produced during the UX design phase to plan the responsive layout of the ITMarket marketplace application across all major device form factors. The wireframes define the structural layout, content hierarchy, navigation behaviour, and interaction patterns prior to implementation.
+
+The designs follow a mobile-first approach and scale progressively for tablet, laptop, and desktop screen sizes using Bootstrap’s responsive grid system.
+
+Device Layouts
+Desktop Wireframe
+
+Full-width navigation bar with authentication state
+
+Multi-column product grid (3–4 cards per row)
+
+Category and sorting controls above listings
+
+Prominent product images and action buttons
+
+Laptop Wireframe
+
+Reduced-width navigation bar
+
+Three-column product grid
+
+Centralised filters and controls
+
+Card-based layout with ownership action buttons
+
+Tablet Wireframe
+
+Collapsible navigation menu
+
+Two-column stacked product layout
+
+Touch-friendly buttons and spacing
+
+Optimised form layout for portrait orientation
+
+Mobile Wireframe
+
+Hamburger navigation menu
+
+Single-column product layout
+
+Large touch targets
+
+Stacked form inputs
+
+Optimised typography and spacing for small screens
+
+Design Rationale
+
+The wireframes were created to ensure:
+
+Clear navigation flow for authenticated and unauthenticated users
+
+Consistent visual hierarchy across all screen sizes
+
+Touch-friendly interaction for mobile and tablet users
+
+Accessibility-compliant form and navigation design
+
+Efficient product browsing and management workflows
+
+The final implemented UI follows these wireframes closely and was refined iteratively based on usability testing and responsive behaviour validation.
+
+Assessment Mapping
+Learning Outcome	Evidence
+LO1.1	Responsive layout across desktop, laptop, tablet, and mobile
+LO1.5	Documented UX design process using wireframes
+LO1	Accessibility-aware layout planning
+LO2	UI designed around CRUD workflows
+LO3	Navigation reflects authentication state
+Wireframe Screenshots
+
+Place your wireframe images inside a folder named docs/wireframes/ and reference them as follows:
+
+![Desktop Wireframe](docs/wireframes/desktop.png)
+![Laptop Wireframe](docs/wireframes/laptop.png)
+![Tablet Wireframe](docs/wireframes/tablet.png)
+![Mobile Wireframe](docs/wireframes/mobile.png)
+
 ________________________________________
 Features
 Authentication & Authorisation
@@ -89,6 +171,12 @@ description	TextField	Product description
 price	DecimalField	Product price
 created_at	DateTimeField	Auto timestamp
 The data model is implemented using Django ORM with enforced ownership relationships, database migrations, and integrity constraints.
+
+erDiagram
+    USER ||--o{ PRODUCT : creates
+    CATEGORY ||--o{ PRODUCT : categorises
+    PRODUCT ||--o{ PRODUCTIMAGE : has
+
 ________________________________________
 Agile Methodology
 Epics
@@ -122,6 +210,60 @@ python manage.py test accounts
 python manage.py test marketplace
 python manage.py test
 All tests pass successfully, validating application integrity and user workflows.
+
+Test Coverage Table
+ID	Area	Test Type	Validation	Status
+T1	Product Model	Unit	Save & string	Pass
+T2	Category Model	Unit	Slug generation	Pass
+T3	Product List	Integration	Page loads	Pass
+T4	Create Product	Integration	Auth create	Pass
+T5	Update Product	Integration	Owner update	Pass
+T6	Delete Product	Integration	Owner delete	Pass
+T7	Ownership	Security	Non-owner blocked	Pass
+T8	Messages	Functional	CRUD messages	Pass
+T9	Registration	Functional	User creation	Pass
+T10	Login/Logout	Functional	Auth flow	Pass
+T11	Image Upload	Integration	Owner upload	Pass
+T12	Primary Image	Functional	Primary logic	Pass
+T13	Image Delete	Security	Non-owner blocked	Pass
+
+Manual Testing
+Feature	Result	Status
+Registration	Account created	Pass
+Login	Login successful	Pass
+Logout	Session ended	Pass
+Create Product	Product saved	Pass
+Update Product	Product updated	Pass
+Delete Product	Product removed	Pass
+Ownership	Non-owner blocked	Pass
+Category	Category displayed	Pass
+Image Upload	Image displayed	Pass
+Primary Image	Primary shown first	Pass
+Image Delete	Image removed	Pass
+Mobile View	Responsive layout	Pass
+
+Known Issues & Resolved Bugs
+Issue	Cause	Fix
+Login template error	Template path misconfig	Added templates DIR
+500 error on auth	Missing env vars	Robust env handling
+Messages missing	Base template	Added message block
+Ownership bypass	Missing filter	Enforced owner checks
+Image loss on Heroku	Ephemeral FS	Cloudinary storage
+Multiple primary images	No enforcement	Auto-unset logic
+Debugging used Django tracebacks, automated tests, and AI-assisted diagnosis.
+
+docs/screenshots/
+ ├── home_desktop.png
+ ├── home_mobile.png
+ ├── register.png
+ ├── login.png
+ ├── create_product.png
+ ├── update_product.png
+ ├── delete_product.png
+ ├── image_upload.png
+ ├── messages.png
+ └── heroku_live.png
+
 ________________________________________
 Version Control
 Git Strategy
