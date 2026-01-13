@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="{% static 'marketplace/favicon.svg' %}">
+    <link rel="icon" type="image/svg+xml" href="{% static 'marketplace/slides/favicon.svg' %}">
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -16,14 +16,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Site CSS -->
-    <link rel="stylesheet" href="{% static 'marketplace/site.css' %}">
+    <link rel="stylesheet" href="{% static 'marketplace/slides/site.css' %}">
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
         <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="{% url 'product_list' %}">
-            <img src="{% static 'marketplace/itmarket-logo.svg' %}" alt="ItMarket logo" width="34" height="34" style="border-radius: 50%; border: 1px solid rgba(255,255,255,0.25);">
+            <img src="{% static 'marketplace/slides/itmarketlogo.svg' %}"
+                 alt="ItMarket logo"
+                 width="34" height="34"
+                 style="border-radius: 50%; border: 1px solid rgba(255,255,255,0.25);">
             ITMarket
         </a>
 
@@ -62,8 +65,6 @@
     </footer>
 </div>
 
-<!-- Bootstrap JS (needed for Carousel controls) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>

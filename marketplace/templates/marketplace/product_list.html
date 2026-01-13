@@ -1,80 +1,78 @@
 {% extends "marketplace/base.html" %}
 {% block content %}
 
-<!-- Brand / Hero section -->
-<div class="p-4 rounded-4 mb-4" style="border:1px solid rgba(248,250,252,0.12); background: rgba(2,6,23,0.35);">
-  <div class="row align-items-center g-4">
-    <div class="col-lg-7">
-      <h1 class="mb-2" style="font-weight:800;">Welcome to ItMarket</h1>
-      <p class="mb-2" style="color: rgba(248,250,252,0.88);">
-        ItMarket is a focused marketplace for buying and selling modern tech—consoles, phones, tablets,
-        laptops, desktops, gaming PCs, and accessories. List your items quickly, manage images easily,
-        and help buyers find exactly what they want with simple search and clean listings.
-      </p>
-      <ul class="mb-3" style="color: rgba(248,250,252,0.82);">
-        <li>Clear listings with images and categories</li>
-        <li>Owner-only editing, deleting, and image management</li>
+<!-- Hero / Brand content -->
+<div class="hero-panel p-4 mb-4">
+  <h1 class="mb-2" style="font-weight:800;">Welcome to ItMarket</h1>
+
+  <p class="mb-3" style="color: rgba(248,250,252,0.88);">
+    ItMarket is a focused marketplace for buying and selling modern tech—consoles, phones, tablets,
+    laptops, desktops, gaming PCs, and accessories. Create listings quickly, upload images, and help buyers
+    find what they want with clean search and clear product cards.
+  </p>
+
+  <div class="row g-3">
+    <div class="col-md-8">
+      <ul class="mb-0" style="color: rgba(248,250,252,0.84);">
+        <li>Simple listings with categories, pricing, and images</li>
+        <li>Owner-only edit/delete controls to keep listings accurate</li>
         <li>Fast search by title, description, category, or seller</li>
       </ul>
-
-      <div class="d-flex flex-wrap gap-2">
-        {% if user.is_authenticated %}
-          <a class="btn btn-primary" href="{% url 'product_create' %}">Add Product</a>
-        {% else %}
-          <a class="btn btn-primary" href="{% url 'register' %}">Create an account</a>
-          <a class="btn btn-outline-light" href="{% url 'login' %}">Login</a>
-        {% endif %}
-      </div>
     </div>
+    <div class="col-md-4 d-flex gap-2 justify-content-md-end align-items-start flex-wrap">
+      {% if user.is_authenticated %}
+        <a class="btn btn-primary" href="{% url 'product_create' %}">Add Product</a>
+      {% else %}
+        <a class="btn btn-primary" href="{% url 'register' %}">Create an account</a>
+        <a class="btn btn-outline-light" href="{% url 'login' %}">Login</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
 
-    <div class="col-lg-5">
-      <!-- Carousel -->
-      <div id="itmarketCarousel" class="carousel slide" data-bs-ride="carousel" style="border-radius:16px; overflow:hidden; border:1px solid rgba(248,250,252,0.12);">
-        <div class="carousel-inner">
+<!-- Carousel (now BELOW hero) -->
+<div class="carousel-frame mb-4">
+  <div id="itmarketCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
 
-          <div class="carousel-item active">
-            <img class="d-block w-100" alt="Gaming consoles"
-                 src="/static/marketplace/slides/slide-consoles.svg">
-          </div>
-
-          <div class="carousel-item">
-            <img class="d-block w-100" alt="Phones and tablets"
-                 src="/static/marketplace/slides/slide-mobile.svg">
-          </div>
-
-          <div class="carousel-item">
-            <img class="d-block w-100" alt="Laptops and desktops"
-                 src="/static/marketplace/slides/slide-computers.svg">
-          </div>
-
-          <div class="carousel-item">
-            <img class="d-block w-100" alt="Gaming PC and accessories"
-                 src="/static/marketplace/slides/slide-accessories.svg">
-          </div>
-
-        </div>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#itmarketCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#itmarketCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+      <div class="carousel-item active">
+        <img class="d-block w-100" alt="Gaming consoles"
+             src="/static/marketplace/slides/slide-consoles.svg">
       </div>
 
-      <p class="mt-2 mb-0" style="color: rgba(248,250,252,0.70); font-size: 0.95rem;">
-        Explore listings for Xbox, PlayStation, Nintendo, Steam Deck, iPhone, Galaxy devices, laptops, PCs and accessories.
-      </p>
+      <div class="carousel-item">
+        <img class="d-block w-100" alt="Phones and tablets"
+             src="/static/marketplace/slides/slide-mobile.svg">
+      </div>
+
+      <div class="carousel-item">
+        <img class="d-block w-100" alt="Laptops and desktops"
+             src="/static/marketplace/slides/slide-computers.svg">
+      </div>
+
+      <div class="carousel-item">
+        <img class="d-block w-100" alt="Gaming and accessories"
+             src="/static/marketplace/slides/slide-accessories.svg">
+      </div>
+
     </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#itmarketCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#itmarketCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
 </div>
 
 <!-- Search bar -->
 <form method="get" class="mb-4">
   <div class="input-group">
-    <input type="text" class="form-control" name="q" value="{{ q }}" placeholder="Search products (title, description, category, seller)…">
+    <input type="text" class="form-control" name="q" value="{{ q }}"
+           placeholder="Search products (title, description, category, seller)…">
     <button class="btn btn-outline-light" type="submit">Search</button>
     {% if q %}
       <a class="btn btn-outline-light" href="{% url 'product_list' %}">Clear</a>
@@ -82,7 +80,7 @@
   </div>
 </form>
 
-<!-- Results header -->
+<!-- Listings header -->
 <div class="d-flex justify-content-between align-items-center mb-3">
   <h2 class="mb-0">Product Listings</h2>
   {% if user.is_authenticated %}
@@ -90,10 +88,11 @@
   {% endif %}
 </div>
 
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+<!-- Product grid -->
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
   {% for product in products %}
     <div class="col">
-      <div class="card h-100 shadow-sm">
+      <div class="card h-100">
         <div class="card-body">
 
           {% if product.category %}
@@ -102,29 +101,31 @@
 
           {% with img=product.display_image %}
             {% if img %}
-              <img src="{{ img.image.url }}" class="product-img mb-3" alt="{{ img.alt_text|default:product.title }}">
+              <img src="{{ img.image.url }}" class="product-img mb-3"
+                   alt="{{ img.alt_text|default:product.title }}">
             {% else %}
-              <div class="product-img mb-3 d-flex align-items-center justify-content-center" style="color: rgba(248,250,252,0.65);">
+              <div class="product-img mb-3 d-flex align-items-center justify-content-center"
+                   style="color: rgba(248,250,252,0.70);">
                 No image uploaded yet
               </div>
             {% endif %}
           {% endwith %}
 
-          <h5 class="card-title">{{ product.title }}</h5>
+          <h5 class="card-title mb-2">{{ product.title }}</h5>
 
-          <p class="card-text mb-2">
+          <p class="card-text mb-3">
             {{ product.description|truncatechars:120 }}
           </p>
 
-          <div class="d-flex justify-content-between align-items-center mt-3">
+          <div class="d-flex justify-content-between align-items-center">
             <div class="fw-bold">£{{ product.price }}</div>
-            <div class="text-muted" style="font-size: 0.95rem;">
-              by <strong style="color: rgba(248,250,252,0.88);">{{ product.owner.username }}</strong>
+            <div class="text-muted" style="font-size:0.95rem;">
+              by <strong style="color: rgba(248,250,252,0.90);">{{ product.owner.username }}</strong>
             </div>
           </div>
 
           {% if user.is_authenticated and user == product.owner %}
-            <hr style="border-color: rgba(248,250,252,0.12);">
+            <hr style="border-color: rgba(248,250,252,0.14);">
             <div class="d-flex gap-2 flex-wrap">
               <a class="btn btn-sm btn-outline-light" href="{% url 'product_update' product.pk %}">Edit</a>
               <a class="btn btn-sm btn-outline-danger" href="{% url 'product_delete' product.pk %}">Delete</a>
@@ -136,7 +137,7 @@
       </div>
     </div>
   {% empty %}
-    <p style="color: rgba(248,250,252,0.75);">
+    <p style="color: rgba(248,250,252,0.78);">
       No products found{% if q %} for “{{ q }}”{% endif %}.
       {% if user.is_authenticated %}
         Use “Add Product” to create one.
