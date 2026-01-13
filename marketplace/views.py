@@ -1,11 +1,12 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .models import Product, ProductImage
 from .forms import ProductForm, ProductImageForm
-from django.db.models import Q
+from .models import Product, ProductImage
+
 
 def product_list(request):
     q = (request.GET.get("q") or "").strip()
@@ -24,9 +25,7 @@ def product_list(request):
             | Q(category__name__icontains=q)
         )
 
-    context = {"products": products, "q": q}
-    return render(request, "marketplace/product_list.html", context)
-
+    return render(request, "marketplace/product_list.html", {"products": products, "q": q})
 
 
 @login_required
