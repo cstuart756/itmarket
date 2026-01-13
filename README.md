@@ -171,6 +171,43 @@ description	TextField	Product description
 price	DecimalField	Product price
 created_at	DateTimeField	Auto timestamp
 The data model is implemented using Django ORM with enforced ownership relationships, database migrations, and integrity constraints.
+erDiagram
+    USER ||--o{ PRODUCT : creates
+    CATEGORY ||--o{ PRODUCT : categorises
+    PRODUCT ||--o{ PRODUCTIMAGE : has
+
+    USER {
+        int id PK
+        string username
+        string email
+    }
+
+    CATEGORY {
+        int id PK
+        string name
+        string slug
+    }
+
+    PRODUCT {
+        int id PK
+        int owner_id FK
+        int category_id FK
+        string title
+        text description
+        decimal price
+        datetime created_at
+    }
+
+    PRODUCTIMAGE {
+        int id PK
+        int product_id FK
+        int uploaded_by_id FK
+        string image
+        string alt_text
+        boolean is_primary
+        datetime created_at
+    }
+
 
 erDiagram
     USER ||--o{ PRODUCT : creates
