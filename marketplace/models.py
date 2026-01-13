@@ -47,9 +47,15 @@ class Product(models.Model):
         """
         return self.images.first()
 
+    @property
+    def display_image(self):
+        """
+        Prefer primary image, otherwise first available image.
+        """
+        return self.primary_image or self.images.first()
+
     def __str__(self):
         return self.title
-
 
 
 class ProductImage(models.Model):
