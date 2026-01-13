@@ -1,7 +1,13 @@
 {% extends "marketplace/base.html" %}
 {% block content %}
 
-<h1 class="mb-3">Product Listings</h1>
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1 class="mb-0">Product Listings</h1>
+
+  {% if user.is_authenticated %}
+    <a class="btn btn-primary" href="{% url 'product_create' %}">Add Product</a>
+  {% endif %}
+</div>
 
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
   {% for product in products %}
@@ -9,12 +15,10 @@
       <div class="card h-100 shadow-sm">
         <div class="card-body">
 
-          {# Category badge #}
           {% if product.category %}
             <span class="badge bg-info text-dark mb-2">{{ product.category.name }}</span>
           {% endif %}
 
-          {# Product image (use display_image property/method) #}
           {% with img=product.display_image %}
             {% if img %}
               <img src="{{ img.image.url }}"
@@ -23,7 +27,6 @@
             {% endif %}
           {% endwith %}
 
-          {# Product info #}
           <h5 class="card-title">{{ product.title }}</h5>
 
           <p class="card-text">
@@ -36,18 +39,25 @@
             Listed by <strong>{{ product.owner.username }}</strong>
           </p>
 
-          {# Owner-only image management #}
-          {% if user.is_authenticated and user == product.owner and product.images.exists %}
-            <hr>
-            <small class="text-muted">Images:</small>
-            <ul class="mt-1 mb-0">
-              {% for img in product.images.all %}
-                <li>
-                  {% if img.is_primary %}<strong>Primary</strong>{% else %}Secondary{% endif %}
-                  — <a href="{% url 'product_delete_image' img.pk %}">Delete</a>
-                </li>
-              {% endfor %}
-            </ul>
+          {% if user.is_authenticated and user == product.owner %}
+            <div class="d-flex gap-2 flex-wrap">
+              <a class="btn btn-sm btn-outline-light" href="{% url 'product_update' product.pk %}">Edit</a>
+              <a class="btn btn-sm btn-outline-danger" href="{% url 'product_delete' product.pk %}">Delete</a>
+              <a class="btn btn-sm btn-outline-success" href="{% url 'product_add_image' product.pk %}">Add Image</a>
+            </div>
+
+            {% if product.images.exists %}
+              <hr>
+              <small class="text-muted">Images:</small>
+              <ul class="mt-1 mb-0">
+                {% for img in product.images.all %}
+                  <li>
+                    {% if img.is_primary %}<strong>Primary</strong>{% else %}Secondary{% endif %}
+                    — <a href="{% url 'product_delete_image' img.pk %}">Delete</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
           {% endif %}
 
         </div>

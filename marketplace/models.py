@@ -41,18 +41,12 @@ class Product(models.Model):
 
     @property
     def primary_image(self):
-        """
-        Returns the primary ProductImage if set; otherwise the newest image.
-        Uses ProductImage.Meta.ordering (-is_primary, -created_at).
-        """
+        # ProductImage ordering: (-is_primary, -created_at)
         return self.images.first()
 
     @property
     def display_image(self):
-        """
-        Prefer primary image, otherwise first available image.
-        """
-        return self.primary_image or self.images.first()
+        return self.primary_image
 
     def __str__(self):
         return self.title
@@ -62,7 +56,7 @@ class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="images")
     uploaded_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="uploaded_images")
     image = CloudinaryField("image")
-    alt_text = models.CharField(max_length=125)
+    alt_text = models.CharField(max_length=125, blank=True)
     is_primary = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 

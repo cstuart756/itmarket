@@ -34,7 +34,6 @@ def product_create(request):
 
 @login_required
 def product_update(request, pk):
-    # Ownership enforcement: only the owner can update
     product = get_object_or_404(Product, pk=pk, owner=request.user)
 
     if request.method == "POST":
@@ -51,7 +50,6 @@ def product_update(request, pk):
 
 @login_required
 def product_delete(request, pk):
-    # Ownership enforcement: only the owner can delete
     product = get_object_or_404(Product, pk=pk, owner=request.user)
 
     if request.method == "POST":

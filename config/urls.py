@@ -18,8 +18,14 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
+
+    # Django built-in auth views: /accounts/login/, /accounts/logout/, etc.
     path("accounts/", include("django.contrib.auth.urls")),
+
+    # Your accounts app (register)
     path("accounts/", include("accounts.urls")),
+
+    # Marketplace
     path("", include("marketplace.urls")),
 ]
