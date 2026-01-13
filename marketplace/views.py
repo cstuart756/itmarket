@@ -36,12 +36,17 @@ def product_create(request):
             product = form.save(commit=False)
             product.owner = request.user
             product.save()
-            messages.success(request, "Product created successfully.")
-            return redirect("product_list")
+
+            messages.success(request, "Product created. Now upload images.")
+            return redirect("product_add_image", pk=product.pk)
     else:
         form = ProductForm()
 
-    return render(request, "marketplace/product_form.html", {"form": form, "mode": "Create"})
+    return render(request, "marketplace/product_form.html", {
+        "form": form,
+        "mode": "Create"
+    })
+
 
 
 @login_required

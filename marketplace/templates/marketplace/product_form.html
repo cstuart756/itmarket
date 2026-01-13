@@ -1,11 +1,26 @@
 {% extends "marketplace/base.html" %}
 {% block content %}
-<h2>{{ mode }} Product</h2>
 
-<form method="post" class="w-50">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button class="btn btn-primary">{{ mode }}</button>
-  <a class="btn btn-secondary ms-2" href="{% url 'product_list' %}">Cancel</a>
-</form>
+<h2 class="mb-3">{{ mode }} Product</h2>
+
+<div class="row">
+  <div class="col-md-6">
+
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <button class="btn btn-primary">{{ mode }} Product</button>
+      <a class="btn btn-secondary ms-2" href="{% url 'product_list' %}">Cancel</a>
+    </form>
+
+    {% if mode == "Create" %}
+      <div class="alert alert-info mt-3">
+        After creating your product, you will be taken to the image upload screen.
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+
 {% endblock %}
