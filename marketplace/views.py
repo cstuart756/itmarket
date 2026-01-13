@@ -5,15 +5,28 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Product, ProductImage
 from .forms import ProductForm, ProductImageForm
-
+from django.db.models import Q
 
 def product_list(request):
+    q = (request.GET.get("q") or "").strip()
+
     products = (
         Product.objects.all()
         .select_related("owner", "category")
         .prefetch_related("images")
     )
-    return render(request, "marketplace/product_list.html", {"products": products})
+
+    if q:
+        products = products.filter(
+            Q(title__icontains=q)
+            | Q(description__icontains=q)
+            | Q(owner__username__icontains=q)
+            | Q(category__name__icontains=q)
+        )
+
+    context = {"products": products, "q": q}
+    return render(request, "marketplace/product_list.html", context)
+
 
 
 @login_required

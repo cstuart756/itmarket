@@ -96,6 +96,7 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 # Django 4.2+ storage configuration (replaces STATICFILES_STORAGE)
 STORAGES = {

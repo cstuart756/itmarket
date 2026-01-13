@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="520" height="520" viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="g" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#A78BFA"/>
+      <stop offset="55%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </radialGradient>
+  </defs>
+
+  <circle cx="260" cy="260" r="168" fill="url(#g)"/>
+
+  <ellipse cx="260" cy="275" rx="220" ry="80"
+           fill="none" stroke="#22C55E" stroke-width="14"/>
+
+  <text x="260" y="285" text-anchor="middle"
+        font-family="Arial" font-size="44" font-weight="700"
+        fill="#FFFFFF">
+      ITMARKET
+  </text>
+</svg>
