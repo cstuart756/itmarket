@@ -39,8 +39,17 @@ class Product(models.Model):
     class Meta:
         ordering = ("-created_at",)
 
+    @property
+    def primary_image(self):
+        """
+        Returns the primary ProductImage if set; otherwise the newest image.
+        Uses ProductImage.Meta.ordering (-is_primary, -created_at).
+        """
+        return self.images.first()
+
     def __str__(self):
         return self.title
+
 
 
 class ProductImage(models.Model):

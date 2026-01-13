@@ -1,32 +1,44 @@
 {% extends "marketplace/base.html" %}
-
 {% block content %}
-<div class="d-flex justify-content-between mb-4">
-    <h1>Marketplace</h1>
-    {% if user.is_authenticated %}
-        <a href="{% url 'product_create' %}" class="btn btn-primary">Add Product</a>
-    {% endif %}
-</div>
 
-<div class="row">
-    {% for product in products %}
-        <div class="col-md-4 mb-4">
-            <div class="card p-3 h-100">
-                <h5>{{ product.title }}</h5>
-                <p>{{ product.description }}</p>
-                <p>£{{ product.price }}</p>
-                <small>Seller: {{ product.owner.username }}</small>
+<h1 class="mb-3">Product Listings</h1>
 
-                {% if user == product.owner %}
-                    <div class="mt-3">
-                        <a href="{% url 'product_update' product.pk %}" class="btn btn-sm btn-warning">Edit</a>
-                        <a href="{% url 'product_delete' product.pk %}" class="btn btn-sm btn-danger">Delete</a>
-                    </div>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+  {% for product in products %}
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+
+          {% if product.category %}
+            <span class="badge bg-info text-dark mb-2">{{ product.category.name }}</span>
+          {% endif %}
+
+          {% with primary=product.images.filter(is_primary=True).first %}
+            {% if primary %}
+              <img src="{{ primary.image.url }}" class="img-fluid rounded mb-2" alt="{{ primary.alt_text }}">
+            {% else %}
+              {% with first=product.images.first %}
+                {% if first %}
+                  <img src="{{ first.image.url }}" class="img-fluid rounded mb-2" alt="{{ first.alt_text }}">
                 {% endif %}
-            </div>
+              {% endwith %}
+            {% endif %}
+          {% endwith %}
+
+          <h5 class="card-title">{{ product.title }}</h5>
+          <p class="card-text">{{ product.description|truncatechars:120 }}</p>
+          <p class="fw-bold">£{{ product.price }}</p>
+
+          <p class="text-muted mb-0">
+            Listed by <strong>{{ product.owner.username }}</strong>
+          </p>
+
         </div>
-    {% empty %}
-        <p>No products available.</p>
-    {% endfor %}
+      </div>
+    </div>
+  {% empty %}
+    <p class="text-muted">No products yet. {% if user.is_authenticated %}Use “Add Product” to create one.{% endif %}</p>
+  {% endfor %}
 </div>
+
 {% endblock %}

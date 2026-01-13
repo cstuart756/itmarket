@@ -4,11 +4,17 @@ from django.contrib import messages
 
 from .models import Product
 from .forms import ProductForm
-
+from django.shortcuts import render
+from .models import Product
 
 def product_list(request):
-    products = Product.objects.all().order_by("-created_at")
+    products = (
+        Product.objects.all()
+        .select_related("owner", "category")
+        .prefetch_related("images")
+    )
     return render(request, "marketplace/product_list.html", {"products": products})
+
 
 
 @login_required
