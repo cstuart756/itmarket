@@ -1,12 +1,11 @@
 {% extends "marketplace/base.html" %}
-
 {% block content %}
 <h2>Confirm Delete</h2>
-<p>Are you sure you want to delete "{{ product.title }}"?</p>
+<p>Are you sure you want to delete <strong>{{ product.title }}</strong>?</p>
 
 <form method="post">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-danger">Yes, delete</button>
-    <a href="{% url 'product_list' %}" class="btn btn-secondary">Cancel</a>
+  {% csrf_token %}
+  <button class="btn btn-danger">Yes, delete</button>
+  <a class="btn btn-secondary ms-2" href="{% url 'product_list' %}">Cancel</a>
 </form>
 {% endblock %}

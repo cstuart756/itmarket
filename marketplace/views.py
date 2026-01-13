@@ -1,11 +1,11 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.http import Http404
+from django.shortcuts import render, redirect, get_object_or_404
 
-from .models import Product
-from .forms import ProductForm
-from django.shortcuts import render
-from .models import Product
+from .models import Product, ProductImage
+from .forms import ProductForm, ProductImageForm
+
 
 def product_list(request):
     products = (
@@ -14,7 +14,6 @@ def product_list(request):
         .prefetch_related("images")
     )
     return render(request, "marketplace/product_list.html", {"products": products})
-
 
 
 @login_required
@@ -30,11 +29,12 @@ def product_create(request):
     else:
         form = ProductForm()
 
-    return render(request, "marketplace/product_form.html", {"form": form})
+    return render(request, "marketplace/product_form.html", {"form": form, "mode": "Create"})
 
 
 @login_required
 def product_update(request, pk):
+    # Ownership enforcement: only the owner can update
     product = get_object_or_404(Product, pk=pk, owner=request.user)
 
     if request.method == "POST":
@@ -46,11 +46,12 @@ def product_update(request, pk):
     else:
         form = ProductForm(instance=product)
 
-    return render(request, "marketplace/product_form.html", {"form": form})
+    return render(request, "marketplace/product_form.html", {"form": form, "mode": "Update"})
 
 
 @login_required
 def product_delete(request, pk):
+    # Ownership enforcement: only the owner can delete
     product = get_object_or_404(Product, pk=pk, owner=request.user)
 
     if request.method == "POST":
@@ -59,3 +60,41 @@ def product_delete(request, pk):
         return redirect("product_list")
 
     return render(request, "marketplace/product_confirm_delete.html", {"product": product})
+
+
+@login_required
+def product_add_image(request, pk):
+    product = get_object_or_404(Product, pk=pk, owner=request.user)
+
+    if request.method == "POST":
+        form = ProductImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            img = form.save(commit=False)
+            img.product = product
+            img.uploaded_by = request.user
+
+            if img.is_primary:
+                ProductImage.objects.filter(product=product, is_primary=True).update(is_primary=False)
+
+            img.save()
+            messages.success(request, "Image uploaded successfully.")
+            return redirect("product_list")
+    else:
+        form = ProductImageForm()
+
+    return render(request, "marketplace/product_image_form.html", {"form": form, "product": product})
+
+
+@login_required
+def product_delete_image(request, image_id):
+    image = get_object_or_404(ProductImage, pk=image_id)
+
+    if image.product.owner != request.user:
+        raise Http404("Not found")
+
+    if request.method == "POST":
+        image.delete()
+        messages.success(request, "Image deleted successfully.")
+        return redirect("product_list")
+
+    return render(request, "marketplace/product_image_confirm_delete.html", {"image": image})
