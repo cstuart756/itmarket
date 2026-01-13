@@ -25,7 +25,7 @@ body::before{
   content: "";
   position: fixed;
   inset: -25%;
-  background-image: url("/static/marketplace/slides/itmarketlogo.svg");
+  background-image: url("itmarketlogo.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 520px 520px;
