@@ -1,0 +1,15 @@
+{% extends "marketplace/base.html" %}
+{% block content %}
+<h2>Confirm Image Delete</h2>
+
+<p>
+  Are you sure you want to delete this image for
+  <strong>{{ image.product.title }}</strong>?
+</p>
+
+<form method="post">
+  {% csrf_token %}
+  <button class="btn btn-danger">Yes, delete</button>
+  <a class="btn btn-secondary ms-2" href="{% url 'product_list' %}">Cancel</a>
+</form>
+{% endblock %}

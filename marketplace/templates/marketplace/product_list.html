@@ -4,41 +4,81 @@
 <h1 class="mb-3">Product Listings</h1>
 
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+
   {% for product in products %}
     <div class="col">
       <div class="card h-100 shadow-sm">
+
         <div class="card-body">
 
+          {# Category badge #}
           {% if product.category %}
-            <span class="badge bg-info text-dark mb-2">{{ product.category.name }}</span>
+            <span class="badge bg-info text-dark mb-2">
+              {{ product.category.name }}
+            </span>
           {% endif %}
 
+          {# Product image (primary or fallback) #}
           {% with primary=product.images.filter(is_primary=True).first %}
             {% if primary %}
-              <img src="{{ primary.image.url }}" class="img-fluid rounded mb-2" alt="{{ primary.alt_text }}">
+              <img src="{{ primary.image.url }}"
+                   class="img-fluid rounded mb-2"
+                   alt="{{ primary.alt_text }}">
             {% else %}
               {% with first=product.images.first %}
                 {% if first %}
-                  <img src="{{ first.image.url }}" class="img-fluid rounded mb-2" alt="{{ first.alt_text }}">
+                  <img src="{{ first.image.url }}"
+                       class="img-fluid rounded mb-2"
+                       alt="{{ first.alt_text }}">
                 {% endif %}
               {% endwith %}
             {% endif %}
           {% endwith %}
 
+          {# Product info #}
           <h5 class="card-title">{{ product.title }}</h5>
-          <p class="card-text">{{ product.description|truncatechars:120 }}</p>
+
+          <p class="card-text">
+            {{ product.description|truncatechars:120 }}
+          </p>
+
           <p class="fw-bold">£{{ product.price }}</p>
 
-          <p class="text-muted mb-0">
+          <p class="text-muted mb-2">
             Listed by <strong>{{ product.owner.username }}</strong>
           </p>
+
+          {# Owner-only image management #}
+          {% if user.is_authenticated and user == product.owner and product.images.all %}
+            <hr>
+            <small class="text-muted">Images:</small>
+            <ul class="mt-1 mb-0">
+              {% for img in product.images.all %}
+                <li>
+                  {% if img.is_primary %}
+                    <strong>Primary</strong>
+                  {% else %}
+                    Secondary
+                  {% endif %}
+                  — <a href="{% url 'product_delete_image' img.pk %}">Delete</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
 
         </div>
       </div>
     </div>
+
   {% empty %}
-    <p class="text-muted">No products yet. {% if user.is_authenticated %}Use “Add Product” to create one.{% endif %}</p>
+    <p class="text-muted">
+      No products yet.
+      {% if user.is_authenticated %}
+        Use “Add Product” to create one.
+      {% endif %}
+    </p>
   {% endfor %}
+
 </div>
 
 {% endblock %}
