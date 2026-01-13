@@ -5,17 +5,14 @@
   --text: #f8fafc;
   --muted: #cbd5e1;
 
-  /* original brand feel */
   --brand-purple: #7c3aed;
   --accent-green: #22c55e;
 
-  /* readability helpers */
   --outline: rgba(248,250,252,0.14);
   --outline-strong: rgba(248,250,252,0.22);
   --shadow: 0 14px 34px rgba(0,0,0,0.35);
 }
 
-/* Base */
 html, body { height: 100%; }
 body {
   font-family: 'Poppins', sans-serif;
@@ -32,7 +29,7 @@ body::before{
   background-repeat: no-repeat;
   background-position: center;
   background-size: 520px 520px;
-  opacity: 0.05;               /* softer so text stays readable */
+  opacity: 0.05;
   pointer-events: none;
   z-index: -1;
   animation: itmarketSpin 50s linear infinite;
@@ -43,12 +40,8 @@ body::before{
   to   { transform: rotate(360deg); }
 }
 
-/* Navbar: restore original purple */
-.navbar {
-  background-color: var(--brand-purple);
-}
+.navbar { background-color: var(--brand-purple); }
 
-/* Outer shell */
 .page-shell {
   background: rgba(15,23,42,0.25);
   border: 1px solid rgba(248,250,252,0.06);
@@ -57,16 +50,14 @@ body::before{
   backdrop-filter: blur(6px);
 }
 
-/* Hero block styling */
 .hero-panel{
   border: 1px solid rgba(248,250,252,0.14);
   background: rgba(2,6,23,0.35);
   border-radius: 18px;
 }
 
-/* Cards: higher contrast + clearer borders */
 .card {
-  background: rgba(30,41,59,0.92); /* slightly less transparent so text pops */
+  background: rgba(30,41,59,0.92);
   border: 1px solid var(--outline-strong);
   color: var(--text);
   box-shadow: var(--shadow);
@@ -74,11 +65,8 @@ body::before{
 
 .card-title { color: var(--text); font-weight: 700; }
 .card-text { color: rgba(248,250,252,0.90); }
-
-/* Muted text still visible */
 .text-muted { color: rgba(203,213,225,0.85) !important; }
 
-/* Product image */
 .product-img {
   width: 100%;
   height: 190px;
@@ -88,14 +76,12 @@ body::before{
   background: rgba(255,255,255,0.04);
 }
 
-/* Category badge */
 .badge.bg-info {
   background-color: rgba(96,165,250,0.22) !important;
   color: #e0f2fe !important;
   border: 1px solid rgba(96,165,250,0.40);
 }
 
-/* Buttons */
 .btn-primary {
   background-color: var(--accent-green);
   border: none;
@@ -114,7 +100,6 @@ body::before{
 }
 .btn-outline-success:hover { background: rgba(34,197,94,0.18); }
 
-/* Inputs: better contrast */
 .form-control, .form-select {
   background-color: rgba(2,6,23,0.45);
   border: 1px solid rgba(248,250,252,0.18);
@@ -126,7 +111,6 @@ body::before{
   border-color: rgba(34,197,94,0.55);
 }
 
-/* Carousel container */
 .carousel-frame{
   border-radius: 18px;
   overflow: hidden;
@@ -134,7 +118,6 @@ body::before{
   background: rgba(2,6,23,0.25);
 }
 
-/* Footer */
 .site-footer {
   margin-top: 40px;
   padding: 18px 0;
@@ -146,6 +129,7 @@ body::before{
   text-decoration: none;
 }
 .site-footer a:hover { text-decoration: underline; }
+
 /* Auth pages */
 .auth-wrap{
   max-width: 520px;
@@ -160,9 +144,7 @@ body::before{
   padding: 22px;
 }
 
-.auth-card h2{
-  font-weight: 800;
-}
+.auth-card h2{ font-weight: 800; }
 
 .auth-card .helptext,
 .auth-card ul{
@@ -185,4 +167,3 @@ body::before{
   border: 1px solid rgba(248,250,252,0.18);
   color: #f8fafc;
 }
-
