@@ -1,380 +1,490 @@
+# ITMarket – AI-Augmented Full-Stack Django Web Application
+
+[![Django](https://img.shields.io/badge/Django-4.2%20LTS-092E20?logo=django&logoColor=white)](https://www.djangoproject.com/)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
+[![Deployment](https://img.shields.io/badge/Deployed-Heroku-430098?logo=heroku&logoColor=white)](https://www.heroku.com/)
+[![Media](https://img.shields.io/badge/Media-Cloudinary-3448C5?logo=cloudinary&logoColor=white)](https://cloudinary.com/)
+
 ## Live Site (Heroku)
-Deployed application: https://itmarket-app-208bb526531b.herokuapp.com/
+Deployed application: https://itmarket-app.herokuapp.com/
 
-ITMarket – AI-Augmented Full-Stack Django Web Application
-Author: Stuart Carey
-Programme: AI-Augmented Full-Stack Bootcamp — Individual Capstone Project
-________________________________________
-Project Overview
-ITMarket is a full-stack marketplace web application developed using Django 4.2.1, Python 3.13.11, Bootstrap 5, and Google Fonts. The platform enables users to register, authenticate, and manage marketplace products using secure, database-backed CRUD functionality with ownership-based access control.
-The application demonstrates:
-•	Secure authentication and authorisation
-•	Object-oriented data modelling with Django ORM
-•	Responsive and accessible user interface design
-•	Automated unit and integration testing
-•	Cloud deployment using Heroku
-•	AI-augmented software development workflows
-The system is deployed to Heroku and version-controlled using GitHub, following industry-standard DevOps practices.
-This project satisfies all requirements of the AI-Augmented Full-Stack Bootcamp Individual Capstone Project and demonstrates professional full-stack development competency.
-________________________________________
-UX Design
-Design Goals
-•	Provide a clean and intuitive interface for buyers and sellers
-•	Ensure full responsiveness across desktop, tablet, and mobile devices
-•	Maintain WCAG-compliant accessibility standards
-•	Apply a bright and vivid colour palette for strong visual identity
-•	Provide consistent navigation and clear user feedback
-Layout & Interface Design
-•	Navigation bar displaying authentication state
-•	Card-based product listing layout
-•	Centrally aligned authentication and product management forms
-•	Feedback messages for all user actions (registration, login, CRUD operations)
-Colour Scheme
-•	Primary: #FF2E63 (Vibrant Pink)
-•	Secondary: #08D9D6 (Bright Teal)
-•	Dark Contrast: #252A34
-•	Background: #EAEAEA
-Typography
-•	Google Font: Poppins
-•	Used consistently across headings and body text
-The interface follows a mobile-first design approach and is implemented using the Bootstrap 5 responsive grid system.
+## Repository
+GitHub repository: https://github.com/cstuart756/itmarket
 
-Wireframes (Design Documentation)
+---
 
-The following wireframes were produced during the UX design phase to plan the responsive layout of the ITMarket marketplace application across all major device form factors. The wireframes define the structural layout, content hierarchy, navigation behaviour, and interaction patterns prior to implementation.
+## Project Overview
 
-The designs follow a mobile-first approach and scale progressively for tablet, laptop, and desktop screen sizes using Bootstrap’s responsive grid system.
+**ITMarket** is a full-stack marketplace web application built with **Django 4.2 (LTS)**, **Python 3.11**, **Bootstrap 5**, and **Cloudinary**. It enables users to register, authenticate, and manage marketplace products with secure, database-backed **CRUD** workflows and ownership-based access control.
 
-Device Layouts
-Desktop Wireframe
+The platform is designed for buying and selling modern technology products such as **consoles, phones, tablets, laptops, desktops, gaming PCs, and accessories**.
 
-Full-width navigation bar with authentication state
+### Key Capabilities
+- Full-stack Django architecture (MTV pattern)
+- Secure authentication & authorisation
+- Media uploads using Cloudinary (production-safe storage)
+- Responsive UI across desktop, laptop, tablet, and mobile
+- Cloud deployment with Heroku
+- Agile development workflow using GitHub Issues + Projects (Kanban)
+- AI-augmented software engineering workflow (with manual validation)
 
-Multi-column product grid (3–4 cards per row)
+This project satisfies the requirements of the **AI-Augmented Full-Stack Bootcamp Individual Capstone Project**.
 
-Category and sorting controls above listings
+---
 
-Prominent product images and action buttons
+## Table of Contents
+- [UX Design](#ux-design)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Data Model](#data-model)
+- [Agile Methodology](#agile-methodology)
+- [Automated Testing](#automated-testing)
+- [Version Control](#version-control)
+- [Deployment (Heroku)](#deployment-heroku)
+- [Bug Fix Log](#bug-fix-log)
+- [Screenshots](#screenshots)
+- [AI-Assisted Development (Reflection)](#ai-assisted-development-reflection)
+- [Future Enhancements](#future-enhancements)
+- [References](#references)
+- [Author](#author)
+- [Declaration](#declaration)
 
-Laptop Wireframe
+---
 
-Reduced-width navigation bar
+## UX Design
 
-Three-column product grid
+### Design Goals
+- Clean, intuitive interface for buyers and sellers
+- Fully responsive across desktop, laptop, tablet, and mobile
+- Accessibility-aware design with clear navigation and readable forms
+- Bright and vivid colour palette for visual engagement
+- Consistent feedback messages for all user actions
 
-Centralised filters and controls
+### Colour Scheme
 
-Card-based layout with ownership action buttons
+| Purpose | Colour |
+|---|---|
+| Primary | `#FF2E63` (Vibrant Pink) |
+| Secondary | `#08D9D6` (Bright Teal) |
+| Dark Contrast | `#252A34` |
+| Background | `#EAEAEA` |
 
-Tablet Wireframe
+### Typography
+- Google Font: **Poppins**
+- Applied consistently to headings and body text
 
-Collapsible navigation menu
+### Wireframes (Design Documentation)
 
-Two-column stacked product layout
+Wireframes were produced to plan the responsive layout of the ITMarket marketplace application across major device form factors. They define:
+- Layout structure
+- Content hierarchy
+- Navigation behaviour
+- Interaction patterns
 
-Touch-friendly buttons and spacing
+The designs follow a **mobile-first approach** and scale progressively using **Bootstrap’s responsive grid system**.
 
-Optimised form layout for portrait orientation
+#### Device Layouts
 
-Mobile Wireframe
+**Desktop**
+- Full-width navigation bar with authentication state
+- Multi-column product grid (3–4 cards per row)
+- Category and sorting controls above listings
+- Prominent product images and action buttons
 
-Hamburger navigation menu
+**Laptop**
+- Reduced-width navigation bar
+- Three-column product grid
+- Centralised filters and controls
+- Card-based layout with ownership action buttons
 
-Single-column product layout
+**Tablet**
+- Collapsible navigation menu
+- Two-column stacked product layout
+- Touch-friendly buttons and spacing
+- Optimised form layout for portrait orientation
 
-Large touch targets
+**Mobile**
+- Hamburger navigation menu
+- Single-column product layout
+- Large touch targets
+- Stacked form inputs
+- Optimised typography and spacing for small screens
 
-Stacked form inputs
+#### Wireframe Images
+Place wireframes in `docs/wireframes/`:
 
-Optimised typography and spacing for small screens
+- `docs/wireframes/mobile.png`
+- `docs/wireframes/tablet.png`
+- `docs/wireframes/laptop.png`
+- `docs/wireframes/desktop.png`
 
-Design Rationale
+```markdown
+![Mobile Wireframe](docs/wireframes/mobile.png)
+![Tablet Wireframe](docs/wireframes/tablet.png)
+![Laptop Wireframe](docs/wireframes/laptop.png)
+![Desktop Wireframe](docs/wireframes/desktop.png)
 
-The wireframes were created to ensure:
-
-Clear navigation flow for authenticated and unauthenticated users
-
-Consistent visual hierarchy across all screen sizes
-
-Touch-friendly interaction for mobile and tablet users
-
-Accessibility-compliant form and navigation design
-
-Efficient product browsing and management workflows
-
-The final implemented UI follows these wireframes closely and was refined iteratively based on usability testing and responsive behaviour validation.
-
-Assessment Mapping
+Assessment Mapping (Wireframes)
 Learning Outcome	Evidence
 LO1.1	Responsive layout across desktop, laptop, tablet, and mobile
 LO1.5	Documented UX design process using wireframes
 LO1	Accessibility-aware layout planning
 LO2	UI designed around CRUD workflows
 LO3	Navigation reflects authentication state
-Wireframe Screenshots
-
-Place your wireframe images inside a folder named docs/wireframes/ and reference them as follows:
-
-![Desktop Wireframe](docs/wireframes/desktop.png)
-![Laptop Wireframe](docs/wireframes/laptop.png)
-![Tablet Wireframe](docs/wireframes/tablet.png)
-![Mobile Wireframe](docs/wireframes/mobile.png)
-
-________________________________________
 Features
-Authentication & Authorisation
-•	User registration
-•	Secure login and logout
-•	Login state reflected in navigation bar
-•	Role-based access control
-•	Ownership-based permissions for product management
+Authentication & Authorization
+
+    User registration
+
+    Login and logout
+
+    Authentication state reflected in navbar
+
+    Ownership-based access control:
+
+        Only owners can edit or delete their products
+
 Marketplace Functionality
-•	View all products
-•	Create new products
-•	Update owned products
-•	Delete owned products
-•	Ownership-restricted CRUD operations
-Notifications & Feedback
-•	Registration confirmation
-•	Login confirmation
-•	Product created confirmation
-•	Product updated confirmation
-•	Product deleted confirmation
-________________________________________
+
+    View all products in a responsive card layout
+
+    Create new products (authenticated users)
+
+    Update and delete owned products only
+
+    Category assignment and display
+
+    Cloudinary-backed image upload
+
+    Primary image logic
+
+    Product carousel with device-based imagery
+
+Notifications (Django Messages)
+
+    Registration confirmation
+
+    Product created confirmation
+
+    Product updated confirmation
+
+    Product deleted confirmation
+
+    Image upload confirmation
+
+    Image deletion confirmation
+
 Technologies Used
 Front-End
-•	HTML5
-•	CSS3
-•	Bootstrap 5
-•	Google Fonts
-•	Responsive grid system
-•	Accessible forms and navigation
+
+    HTML5
+
+    CSS3
+
+    Bootstrap 5
+
+    Google Fonts (Poppins)
+
 Back-End
-•	Python 3.13.11
-•	Django 4.2.1
-•	Django ORM
-•	SQLite (development)
-•	PostgreSQL (production)
+
+    Python 3.11
+
+    Django 4.2 (LTS)
+
+    Django ORM
+
+Database
+
+    SQLite (development)
+
+    Heroku Postgres (production)
+
+Media & Static Files
+
+    Cloudinary (media storage)
+
+    Whitenoise (static files)
+
 Tools & Platforms
-•	Visual Studio Code
-•	Git & GitHub
-•	Heroku
-•	Gunicorn
-•	Whitenoise
-________________________________________
-Database Design
+
+    VS Code
+
+    Git & GitHub
+
+    Heroku
+
+    Gunicorn
+
+Data Model
 Product Model
-Field	Type	Description
-owner	ForeignKey(User)	Product owner
-title	CharField	Product title
-description	TextField	Product description
-price	DecimalField	Product price
-created_at	DateTimeField	Auto timestamp
-The data model is implemented using Django ORM with enforced ownership relationships, database migrations, and integrity constraints.
-erDiagram
-    USER ||--o{ PRODUCT : creates
-    CATEGORY ||--o{ PRODUCT : categorises
-    PRODUCT ||--o{ PRODUCTIMAGE : has
 
-    USER {
-        int id PK
-        string username
-        string email
-    }
+    owner — ForeignKey to User
 
-    CATEGORY {
-        int id PK
-        string name
-        string slug
-    }
+    category — ForeignKey to Category (nullable)
 
-    PRODUCT {
-        int id PK
-        int owner_id FK
-        int category_id FK
-        string title
-        text description
-        decimal price
-        datetime created_at
-    }
+    title — CharField
 
-    PRODUCTIMAGE {
-        int id PK
-        int product_id FK
-        int uploaded_by_id FK
-        string image
-        string alt_text
-        boolean is_primary
-        datetime created_at
-    }
+    description — TextField
 
+    price — DecimalField
 
-erDiagram
-    USER ||--o{ PRODUCT : creates
-    CATEGORY ||--o{ PRODUCT : categorises
-    PRODUCT ||--o{ PRODUCTIMAGE : has
+    created_at — DateTimeField
 
-________________________________________
+    updated_at — DateTimeField
+
+Category Model
+
+    name — unique category name
+
+    slug — unique slug
+
+    created_at — timestamp
+
+ProductImage Model
+
+    product — ForeignKey to Product
+
+    uploaded_by — ForeignKey to User
+
+    image — CloudinaryField
+
+    alt_text — accessibility alt text
+
+    is_primary — primary image flag
+
+    created_at — timestamp
+
+ERD Diagram
+
+docs/erd.png
+
+![ERD Diagram](docs/erd.png)
+
+Relationships
+
+    User → Product (one-to-many)
+
+    Category → Product (one-to-many)
+
+    Product → ProductImage (one-to-many)
+
+    User → ProductImage (one-to-many)
+
+Primary image resolution is handled via ordering:
+(-is_primary, -created_at)
 Agile Methodology
 Epics
-1.	User Authentication & Registration
-2.	Marketplace CRUD Functionality
-3.	Notifications & User Feedback
-4.	UX Design & Responsiveness
-5.	Deployment & Security
-User Stories (MoSCoW Prioritisation)
+
+    User Authentication & Registration
+
+    Marketplace CRUD Functionality
+
+    Media Uploads (Cloudinary)
+
+    Notifications & User Feedback
+
+    UX Design & Responsiveness
+
+    Deployment & Security
+
+    Automated Testing
+
+    Documentation & Evidence
+
+User Stories (MoSCoW)
+
 Must Have
-•	User registration and login
-•	Product CRUD functionality
+
+    Register/Login
+
+    CRUD products
+
+    Ownership security
+
+    Deployment
+
 Should Have
-•	Notifications and confirmation messages
+
+    Notifications
+
+    Images
+
 Could Have
-•	Admin dashboard
-•	Product image uploads
-Development followed an Agile workflow using incremental delivery, GitHub issue tracking, and feature-based commits.
-## Agile Project Management
 
-This project was managed using Agile methodology with a Kanban workflow.
+    Filters/search
 
-All development tasks were tracked using GitHub Issues and GitHub Projects, following MoSCoW prioritisation and Epic-based organisation.
+    Admin enhancements
 
-Kanban Board:
-https://github.com/cstuart756/itmarket/projects
+Won’t Have (current scope)
 
-The backlog includes:
-- Infrastructure and setup tasks
-- Authentication and security features
-- Marketplace CRUD implementation
-- Cloud media integration
-- Automated testing
-- Deployment and production hardening
+    Payments/checkout
 
-________________________________________
+Kanban Tracking
+
+Project tracked using GitHub Issues + GitHub Projects (Kanban).
+
+Workflow:
+Backlog → To Do → In Progress → Done
+
+Incremental development with traceable commits.
 Automated Testing
-Testing Strategy
-Automated testing is implemented using Django’s TestCase framework.
-Coverage
-•	Product model tests
-•	CRUD view tests
-•	Authentication tests
-•	Ownership permission tests
-•	Notification message tests
-Test Execution
-python manage.py test accounts
-python manage.py test marketplace
+Testing Approach
+
+Automated tests using Django TestCase covering:
+
+    Models
+
+    Views
+
+    Permissions
+
+    CRUD workflows
+
+    Messages
+
+    Image rules
+
+Automated Test Coverage (Examples)
+Area	What is tested	Evidence
+Product List	Page loads and displays listing	test_product_list_page_loads
+Create Product	Login required, creation works	test_owner_can_create_product_and_sees_message
+Update Product	Owner can update	test_owner_can_update_product_and_sees_message
+Delete Product	Owner can delete	test_owner_can_delete_product_and_sees_message
+Image Upload	Upload works	test_owner_can_upload_image_and_sees_message
+Primary Image Rule	Only one primary image	test_primary_image_rule_unsets_previous_primary
+Image Security	Non-owner blocked	test_non_owner_cannot_delete_image
+Running Tests
+
 python manage.py test
-All tests pass successfully, validating application integrity and user workflows.
 
-Test Coverage Table
-ID	Area	Test Type	Validation	Status
-T1	Product Model	Unit	Save & string	Pass
-T2	Category Model	Unit	Slug generation	Pass
-T3	Product List	Integration	Page loads	Pass
-T4	Create Product	Integration	Auth create	Pass
-T5	Update Product	Integration	Owner update	Pass
-T6	Delete Product	Integration	Owner delete	Pass
-T7	Ownership	Security	Non-owner blocked	Pass
-T8	Messages	Functional	CRUD messages	Pass
-T9	Registration	Functional	User creation	Pass
-T10	Login/Logout	Functional	Auth flow	Pass
-T11	Image Upload	Integration	Owner upload	Pass
-T12	Primary Image	Functional	Primary logic	Pass
-T13	Image Delete	Security	Non-owner blocked	Pass
-
-Manual Testing
-Feature	Result	Status
-Registration	Account created	Pass
-Login	Login successful	Pass
-Logout	Session ended	Pass
-Create Product	Product saved	Pass
-Update Product	Product updated	Pass
-Delete Product	Product removed	Pass
-Ownership	Non-owner blocked	Pass
-Category	Category displayed	Pass
-Image Upload	Image displayed	Pass
-Primary Image	Primary shown first	Pass
-Image Delete	Image removed	Pass
-Mobile View	Responsive layout	Pass
-
-Known Issues & Resolved Bugs
-Issue	Cause	Fix
-Login template error	Template path misconfig	Added templates DIR
-500 error on auth	Missing env vars	Robust env handling
-Messages missing	Base template	Added message block
-Ownership bypass	Missing filter	Enforced owner checks
-Image loss on Heroku	Ephemeral FS	Cloudinary storage
-Multiple primary images	No enforcement	Auto-unset logic
-Debugging used Django tracebacks, automated tests, and AI-assisted diagnosis.
-
-docs/screenshots/
- ├── home_desktop.png
- ├── home_mobile.png
- ├── register.png
- ├── login.png
- ├── create_product.png
- ├── update_product.png
- ├── delete_product.png
- ├── image_upload.png
- ├── messages.png
- └── heroku_live.png
-
-________________________________________
 Version Control
 Git Strategy
-•	Incremental commits with meaningful messages
-•	Feature-based development workflow
-•	Full development lifecycle documented
-Repository:
-https://github.com/cstuart756/itmarket
-Security
-•	.env excluded from repository
-•	Environment variables for secrets
-•	DEBUG disabled in production
-•	No credentials committed
-________________________________________
-Deployment
+
+    Regular commits reflecting incremental progress
+
+    Meaningful commit messages
+
+    Traceable Agile development history
+
+Secure Code Management
+
+    .env excluded via .gitignore
+
+    Secrets stored in Heroku Config Vars
+
+    Production runs with DEBUG=False
+
+Deployment (Heroku)
 Platform
-•	Heroku with PostgreSQL database
-Deployment Workflow
-1.	Create Heroku application
-2.	Configure environment variables
-3.	Disable DEBUG in production
-4.	Deploy via GitHub integration
-5.	Apply database migrations
-6.	Verify production functionality
-Static Files
-•	Managed using Whitenoise
-________________________________________
-AI-Assisted Development
-AI tools were strategically leveraged to:
-•	Generate Django boilerplate code
-•	Assist with automated unit tests
-•	Debug application issues efficiently
-•	Optimise front-end UX and layout
-•	Improve development velocity
-AI significantly improved development efficiency while all architectural and implementation decisions were reviewed and validated manually.
-________________________________________
-Responsiveness & Accessibility
-•	Mobile-first design
-•	Fully responsive grid layout
-•	Accessible navigation and forms
-•	Semantic HTML structure
-•	WCAG-compliant contrast ratios
-________________________________________
+
+    Heroku web hosting + Heroku Postgres
+
+Deployment Steps
+
+    Create Heroku app
+
+    Add Heroku Postgres add-on
+
+    Set Config Vars:
+
+        SECRET_KEY
+
+        DEBUG=False
+
+        CLOUDINARY_URL
+
+    Connect GitHub repo and enable auto deploy
+
+    Run migrations
+
+    Collect static files
+
+    Verify production behaviour
+
+Production Settings
+
+    DEBUG=False
+
+    Environment variables for secrets
+
+    Whitenoise for static files
+
+    Gunicorn production server
+
+    Cloudinary for persistent media storage
+
+Bug Fix Log
+Authentication Template Resolution Fix
+
+Resolved template discovery and authentication-related 500 errors by:
+
+    Ensuring TEMPLATES['DIRS'] includes BASE_DIR / "templates"
+
+    Ensuring login template exists at templates/registration/login.html
+
+    Wiring django.contrib.auth.urls correctly
+
+Result: Authentication workflows render reliably locally and on Heroku.
+Screenshots
+
+Screenshots are stored in docs/screenshots/:
+
+![Heroku Live Home](docs/screenshots/heroku_live.png)
+![Home Desktop](docs/screenshots/home_desktop.png)
+![Home Mobile](docs/screenshots/home_mobile.png)
+![Register](docs/screenshots/register.png)
+![Login](docs/screenshots/login.png)
+![Create Product](docs/screenshots/create_product.png)
+![Update Product](docs/screenshots/update_product.png)
+![Delete Product](docs/screenshots/delete_product.png)
+![Image Upload](docs/screenshots/image_upload.png)
+![Messages](docs/screenshots/messages.png)
+
+AI-Assisted Development (Reflection)
+
+AI tools were used strategically to:
+
+    Generate Django boilerplate aligned to project goals
+
+    Produce unit tests for CRUD flows and security
+
+    Debug deployment and template resolution issues
+
+    Improve UX implementation decisions
+
+    Accelerate iteration while maintaining quality
+
+All AI-generated outputs were reviewed, adapted, and validated through automated testing and manual verification.
 Future Enhancements
-•	Product image uploads
-•	Search and filtering
-•	Admin moderation dashboard
-•	Email notifications
-•	User profiles
-________________________________________
+
+    Advanced search and filtering
+
+    Product image galleries (enhanced browsing experience)
+
+    Admin moderation dashboard
+
+    Email notifications
+
+    User messaging system
+
 References
-•	Django Documentation — https://docs.djangoproject.com
-•	Bootstrap Documentation — https://getbootstrap.com/docs/5.3
-•	Google Fonts — https://fonts.google.com
-•	WCAG Accessibility Standards — https://www.w3.org/WAI/standards-guidelines/wcag/
-•	Heroku Documentation — https://devcenter.heroku.com
-________________________________________
+
+    Django Documentation — https://docs.djangoproject.com/
+
+    Bootstrap Documentation — https://getbootstrap.com/docs/
+
+    Google Fonts — https://fonts.google.com/
+
+    WCAG Guidelines — https://www.w3.org/WAI/standards-guidelines/wcag/
+
+    Heroku Dev Center — https://devcenter.heroku.com/
+
+    Cloudinary Documentation — https://cloudinary.com/documentation
+
 Author
+
 Stuart Carey
-AI-Augmented Full-Stack Bootcamp — Individual Capstone Project
+AI-Augmented Full-Stack Bootcamp – Individual Capstone Project
+Declaration
+
+This project is my own original work. AI tools were used strictly as development assistants. All architecture, security decisions, business logic, and implementation choices were designed, reviewed, and validated independently.
