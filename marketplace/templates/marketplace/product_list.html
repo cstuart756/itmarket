@@ -1,4 +1,7 @@
+{# templates/marketplace/product_list.html (or your current template file) #}
 {% extends "marketplace/base.html" %}
+{% load static %}
+
 {% block content %}
 
 <div class="hero-panel p-4 mb-4">
@@ -18,6 +21,7 @@
         <li>Fast search by title, description, category, or seller</li>
       </ul>
     </div>
+
     <div class="col-md-4 d-flex gap-2 justify-content-md-end align-items-start flex-wrap">
       {% if user.is_authenticated %}
         <a class="btn btn-primary" href="{% url 'product_create' %}">Add Product</a>
@@ -29,66 +33,89 @@
   </div>
 </div>
 
-{% load static %}
-
+{# =========================
+   Uniform Carousel Images
+   ========================= #}
 <div class="carousel-frame mb-4">
   <div id="itmarketCarousel" class="carousel slide" data-bs-ride="carousel">
 
     <div class="carousel-inner">
 
       <div class="carousel-item active">
-        <img class="d-block w-100" alt="Desktop PC"
-             src="{% static 'marketplace/slides/slide-desktop.png' %}">
+        <div class="itmarket-carousel-image-wrapper">
+          <img class="itmarket-carousel-image" alt="Desktop PC"
+               src="{% static 'marketplace/slides/slide-desktop.png' %}">
+        </div>
       </div>
 
       <div class="carousel-item">
-        <img class="d-block w-100" alt="Gaming PC"
-             src="{% static 'marketplace/slides/slide-gamingpc.png' %}">
+        <div class="itmarket-carousel-image-wrapper">
+          <img class="itmarket-carousel-image" alt="Gaming PC"
+               src="{% static 'marketplace/slides/slide-gamingpc.png' %}">
+        </div>
       </div>
 
       <div class="carousel-item">
-        <img class="d-block w-100" alt="Apple iMac"
-             src="{% static 'marketplace/slides/slide-imac.png' %}">
+        <div class="itmarket-carousel-image-wrapper">
+          <img class="itmarket-carousel-image" alt="Apple iMac"
+               src="{% static 'marketplace/slides/slide-imac.png' %}">
+        </div>
       </div>
 
       <div class="carousel-item">
-        <img class="d-block w-100" alt="iPhone"
-             src="{% static 'marketplace/slides/slide-iphone.png' %}">
+        <div class="itmarket-carousel-image-wrapper">
+          <img class="itmarket-carousel-image" alt="iPhone"
+               src="{% static 'marketplace/slides/slide-iphone.png' %}">
+        </div>
       </div>
 
       <div class="carousel-item">
-        <img class="d-block w-100" alt="Laptop"
-             src="{% static 'marketplace/slides/slide-laptop.png' %}">
+        <div class="itmarket-carousel-image-wrapper">
+          <img class="itmarket-carousel-image" alt="Laptop"
+               src="{% static 'marketplace/slides/slide-laptop.png' %}">
+        </div>
       </div>
 
       <div class="carousel-item">
-        <img class="d-block w-100" alt="Meta Quest"
-             src="{% static 'marketplace/slides/slide-meta.png' %}">
+        <div class="itmarket-carousel-image-wrapper">
+          <img class="itmarket-carousel-image" alt="Meta Quest"
+               src="{% static 'marketplace/slides/slide-meta.png' %}">
+        </div>
       </div>
 
       <div class="carousel-item">
-        <img class="d-block w-100" alt="PlayStation 5"
-             src="{% static 'marketplace/slides/slide-playstation.png' %}">
+        <div class="itmarket-carousel-image-wrapper">
+          <img class="itmarket-carousel-image" alt="PlayStation 5"
+               src="{% static 'marketplace/slides/slide-playstation.png' %}">
+        </div>
       </div>
 
       <div class="carousel-item">
-        <img class="d-block w-100" alt="Samsung Galaxy"
-             src="{% static 'marketplace/slides/slide-samsung.png' %}">
+        <div class="itmarket-carousel-image-wrapper">
+          <img class="itmarket-carousel-image" alt="Samsung Galaxy"
+               src="{% static 'marketplace/slides/slide-samsung.png' %}">
+        </div>
       </div>
 
       <div class="carousel-item">
-        <img class="d-block w-100" alt="Tablet"
-             src="{% static 'marketplace/slides/slide-tablet.png' %}">
+        <div class="itmarket-carousel-image-wrapper">
+          <img class="itmarket-carousel-image" alt="Tablet"
+               src="{% static 'marketplace/slides/slide-tablet.png' %}">
+        </div>
       </div>
 
       <div class="carousel-item">
-        <img class="d-block w-100" alt="Xbox One S"
-             src="{% static 'marketplace/slides/slide-xboxones.png' %}">
+        <div class="itmarket-carousel-image-wrapper">
+          <img class="itmarket-carousel-image" alt="Xbox One S"
+               src="{% static 'marketplace/slides/slide-xboxones.png' %}">
+        </div>
       </div>
 
       <div class="carousel-item">
-        <img class="d-block w-100" alt="Xbox Series X"
-             src="{% static 'marketplace/slides/slide-xboxseries.png' %}">
+        <div class="itmarket-carousel-image-wrapper">
+          <img class="itmarket-carousel-image" alt="Xbox Series X"
+               src="{% static 'marketplace/slides/slide-xboxseries.png' %}">
+        </div>
       </div>
 
     </div>
@@ -105,7 +132,6 @@
 
   </div>
 </div>
-
 
 <form method="get" class="mb-4">
   <div class="input-group">
