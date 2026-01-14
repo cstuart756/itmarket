@@ -6,7 +6,7 @@
 [![Media](https://img.shields.io/badge/Media-Cloudinary-3448C5?logo=cloudinary&logoColor=white)](https://cloudinary.com/)
 
 ## Live Site (Heroku)
-Deployed application: https://itmarket-app.herokuapp.com/
+Deployed application: https://[itmarket-app.herokuapp.com](https://itmarket-app-208bb526531b.herokuapp.com/)/
 
 ## Repository
 GitHub repository: https://github.com/cstuart756/itmarket
