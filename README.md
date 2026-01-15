@@ -110,31 +110,41 @@ The designs follow a **mobile-first approach** and scale progressively using **B
 - Stacked form inputs
 - Optimised typography and spacing for small screens
 
-#### Wireframe Images
-Place wireframes in `docs/wireframes/`:
+## Wireframe Images
 
-- `docs/wireframes/mobile.png`
-- `docs/wireframes/tablet.png`
-- `docs/wireframes/laptop.png`
-- `docs/wireframes/desktop.png`
+Wireframes are stored in `docs/screenshots/wireframes/` and document the responsive UI design across mobile, tablet, laptop, and desktop breakpoints.
 
-```markdown
-![Mobile Wireframe](docs/wireframes/mobile.png)
-![Mobile Wireframe](docs/wireframes/mobile0.png)
-![Mobile Wireframe](docs/wireframes/mobile1.png)
-![Tablet Wireframe](docs/wireframes/tablet.png)
-![Mobile Wireframe](docs/wireframes/tablet0.png)
-![Mobile Wireframe](docs/wireframes/tablet1.png)
-![Laptop Wireframe](docs/wireframes/laptop.png)
-![Mobile Wireframe](docs/wireframes/laptop0.png)
-![Mobile Wireframe](docs/wireframes/laptop1.png)
-![Desktop Wireframe](docs/wireframes/desktop.png)
-![Mobile Wireframe](docs/wireframes/desktop0.png)
-![Mobile Wireframe](docs/wireframes/desktop1.png)
-![Mobile Wireframe](docs/wireframes/group.png)
-![Mobile Wireframe](docs/wireframes/group0.png)
-![Mobile Wireframe](docs/wireframes/group1.png)
-![Mobile Wireframe](docs/wireframes/group2.png)
+### Mobile Wireframes
+
+![Mobile Wireframe](docs/screenshots/wireframes/mobile.png)
+![Mobile Wireframe Variant](docs/screenshots/wireframes/mobile0.png)
+![Mobile Wireframe Variant](docs/screenshots/wireframes/mobile1.png)
+
+### Tablet Wireframes
+
+![Tablet Wireframe](docs/screenshots/wireframes/tablet.png)
+![Tablet Wireframe Variant](docs/screenshots/wireframes/tablet0.png)
+![Tablet Wireframe Variant](docs/screenshots/wireframes/tablet1.png)
+
+### Laptop Wireframes
+
+![Laptop Wireframe](docs/screenshots/wireframes/laptop.png)
+![Laptop Wireframe Variant](docs/screenshots/wireframes/laptop0.png)
+![Laptop Wireframe Variant](docs/screenshots/wireframes/laptop1.png)
+
+### Desktop Wireframes
+
+![Desktop Wireframe](docs/screenshots/wireframes/desktop.png)
+![Desktop Wireframe Variant](docs/screenshots/wireframes/desktop0.png)
+![Desktop Wireframe Variant](docs/screenshots/wireframes/desktop1.png)
+
+### Group Layout Concepts
+
+![Group Layout](docs/screenshots/wireframes/group.png)
+![Group Layout Variant](docs/screenshots/wireframes/group0.png)
+![Group Layout Variant](docs/screenshots/wireframes/group1.png)
+![Group Layout Variant](docs/screenshots/wireframes/group2.png)
+
 
 Assessment Mapping (Wireframes)
 Learning Outcome	Evidence
@@ -439,25 +449,20 @@ Resolved template discovery and authentication-related 500 errors by:
 Result: Authentication workflows render reliably locally and on Heroku.
 Screenshots
 
-Screenshots are stored in docs/screenshots/:
+## Screenshots
 
-![Heroku Live Home](docs/screenshots/heroku_live.png)
-![Heroku Live Home](docs/screenshots/homepage_desktop-lighthouse.png)
-![Heroku Live Home](docs/screenshots/01-homepage-heroku.png)
-![Home Desktop](docs/screenshots/home_desktop.png)
-![Home Mobile](docs/screenshots/home_mobile.png)
-![Register](docs/screenshots/register.png)
-![Register](docs/screenshots/03-registration-confirmation.png)
-![Login](docs/screenshots/login.png)
-![Login](docs/screenshots/05-logged-in-state.png)
-![Create Product](docs/screenshots/create_product.png)
-![Update Product](docs/screenshots/update_product.png)
-![Update Product](docs/screenshots/09-edit-product.png)
-![Delete Product](docs/screenshots/delete_product.png)
-![Delete Product](docs/screenshots/enter-correct-username.png)
-![Delete Product](docs/screenshots/itmarket-djangoadmin-add-category.png)
-![Image Upload](docs/screenshots/image_upload.png)
-![Messages](docs/screenshots/messages.png)
+Screenshots are stored in `docs/screenshots/`:
+
+![Homepage (Heroku)](docs/screenshots/01-homepage-heroku.png)
+![Registration Page](docs/screenshots/02-registration-page.png)
+![Registration Confirmation](docs/screenshots/03-registration-confirmation.png)
+![Login Page](docs/screenshots/04-login-page.png)
+![Logged In State](docs/screenshots/05-logged-in-state.png)
+![Create Product](docs/screenshots/06-create-product.png)
+![Product Created Confirmation](docs/screenshots/07-product-created-confirmation.png)
+![Product Updated Confirmation](docs/screenshots/10-product-updated-confirmation.png)
+![Product Deleted Confirmation](docs/screenshots/12-product-deleted-confirmation.png)
+
 
 AI-Assisted Development (Reflection)
 
