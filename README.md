@@ -115,7 +115,7 @@ The designs follow a **mobile-first approach** and scale progressively using **B
 Wireframes are stored in `docs/screenshots/wireframes/`.
 
 ### Mobile
-![Mobile Wireframe](docs\screenshots\wireframes\mobile.png)
+![Mobile Wireframe](docs/screenshots/wireframes/mobile.png)
 ![Mobile Wireframe Variant](docs/screenshots/wireframes/mobile0.png)
 ![Mobile Wireframe Variant](docs/screenshots/wireframes/mobile1.png)
 
