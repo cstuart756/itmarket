@@ -112,33 +112,34 @@ The designs follow a **mobile-first approach** and scale progressively using **B
 
 ## Wireframe Images
 
-Wireframes are stored in `docs/screenshots/wireframes/` and document the responsive UI design across mobile, tablet, laptop, and desktop breakpoints.
+Wireframes are stored in `docs/screenshots/wireframes/`.
 
-### Mobile Wireframes
+### Mobile
 ![Mobile Wireframe](docs/screenshots/wireframes/mobile.png)
 ![Mobile Wireframe Variant](docs/screenshots/wireframes/mobile0.png)
 ![Mobile Wireframe Variant](docs/screenshots/wireframes/mobile1.png)
 
-### Tablet Wireframes
+### Tablet
 ![Tablet Wireframe](docs/screenshots/wireframes/tablet.png)
 ![Tablet Wireframe Variant](docs/screenshots/wireframes/tablet0.png)
 ![Tablet Wireframe Variant](docs/screenshots/wireframes/tablet1.png)
 
-### Laptop Wireframes
+### Laptop
 ![Laptop Wireframe](docs/screenshots/wireframes/laptop.png)
 ![Laptop Wireframe Variant](docs/screenshots/wireframes/laptop0.png)
 ![Laptop Wireframe Variant](docs/screenshots/wireframes/laptop1.png)
 
-### Desktop Wireframes
+### Desktop
 ![Desktop Wireframe](docs/screenshots/wireframes/desktop.png)
 ![Desktop Wireframe Variant](docs/screenshots/wireframes/desktop0.png)
 ![Desktop Wireframe Variant](docs/screenshots/wireframes/desktop1.png)
 
-### Group Layout Concepts
+### Group Concepts
 ![Group Layout](docs/screenshots/wireframes/group.png)
 ![Group Layout Variant](docs/screenshots/wireframes/group0.png)
 ![Group Layout Variant](docs/screenshots/wireframes/group1.png)
 ![Group Layout Variant](docs/screenshots/wireframes/group2.png)
+
 
 
 
