@@ -120,9 +120,21 @@ Place wireframes in `docs/wireframes/`:
 
 ```markdown
 ![Mobile Wireframe](docs/wireframes/mobile.png)
+![Mobile Wireframe](docs/wireframes/mobile0.png)
+![Mobile Wireframe](docs/wireframes/mobile1.png)
 ![Tablet Wireframe](docs/wireframes/tablet.png)
+![Mobile Wireframe](docs/wireframes/tablet0.png)
+![Mobile Wireframe](docs/wireframes/tablet1.png)
 ![Laptop Wireframe](docs/wireframes/laptop.png)
+![Mobile Wireframe](docs/wireframes/laptop0.png)
+![Mobile Wireframe](docs/wireframes/laptop1.png)
 ![Desktop Wireframe](docs/wireframes/desktop.png)
+![Mobile Wireframe](docs/wireframes/desktop0.png)
+![Mobile Wireframe](docs/wireframes/desktop1.png)
+![Mobile Wireframe](docs/wireframes/group.png)
+![Mobile Wireframe](docs/wireframes/group0.png)
+![Mobile Wireframe](docs/wireframes/group1.png)
+![Mobile Wireframe](docs/wireframes/group2.png)
 
 Assessment Mapping (Wireframes)
 Learning Outcome	Evidence
@@ -430,13 +442,20 @@ Screenshots
 Screenshots are stored in docs/screenshots/:
 
 ![Heroku Live Home](docs/screenshots/heroku_live.png)
+![Heroku Live Home](docs/screenshots/homepage_desktop-lighthouse.png)
+![Heroku Live Home](docs/screenshots/01-homepage-heroku.png)
 ![Home Desktop](docs/screenshots/home_desktop.png)
 ![Home Mobile](docs/screenshots/home_mobile.png)
 ![Register](docs/screenshots/register.png)
+![Register](docs/screenshots/03-registration-confirmation.png)
 ![Login](docs/screenshots/login.png)
+![Login](docs/screenshots/05-logged-in-state.png)
 ![Create Product](docs/screenshots/create_product.png)
 ![Update Product](docs/screenshots/update_product.png)
+![Update Product](docs/screenshots/09-edit-product.png)
 ![Delete Product](docs/screenshots/delete_product.png)
+![Delete Product](docs/screenshots/enter-correct-username.png)
+![Delete Product](docs/screenshots/itmarket-djangoadmin-add-category.png)
 ![Image Upload](docs/screenshots/image_upload.png)
 ![Messages](docs/screenshots/messages.png)
 
