@@ -846,6 +846,7 @@ Screenshots
 Screenshots are stored in `docs/screenshots/`:
 ![Herokulive](docs/screenshots/herokulive.png)
 ![Homepage (Heroku)](docs/screenshots/01-homepage-heroku.png)
+![Homepage (Heroku)](docs/screenshots/homepage0.png)
 ![Registration Page](docs/screenshots/02-registration-page.png)
 ![Registration Confirmation](docs/screenshots/03-registration-confirmation.png)
 ![Login Page](docs/screenshots/04-login-page.png)
