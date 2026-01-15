@@ -115,30 +115,30 @@ The designs follow a **mobile-first approach** and scale progressively using **B
 Wireframes are stored in `docs/screenshots/wireframes/`.
 
 ### Mobile
-![Mobile Wireframe](docs/screenshots/wireframes/mobile.png)
-![Mobile Wireframe Variant](docs/screenshots/wireframes/mobile0.png)
-![Mobile Wireframe Variant](docs/screenshots/wireframes/mobile1.png)
+![Mobile Wireframe](docs/screenshots/wireframes/wireframes/mobile.png)
+![Mobile Wireframe Variant](docs/screenshots/wireframes/wireframes/mobile0.png)
+![Mobile Wireframe Variant](docs/screenshots/wireframes/wireframes/mobile1.png)
 
 ### Tablet
-![Tablet Wireframe](docs/screenshots/wireframes/tablet.png)
-![Tablet Wireframe Variant](docs/screenshots/wireframes/tablet0.png)
-![Tablet Wireframe Variant](docs/screenshots/wireframes/tablet1.png)
+![Tablet Wireframe](docs/screenshots/wireframes/wireframes/tablet.png)
+![Tablet Wireframe Variant](docs/screenshots/wireframes/wireframes/tablet0.png)
+![Tablet Wireframe Variant](docs/screenshots/wireframes/wireframes/tablet1.png)
 
 ### Laptop
-![Laptop Wireframe](docs/screenshots/wireframes/laptop.png)
-![Laptop Wireframe Variant](docs/screenshots/wireframes/laptop0.png)
-![Laptop Wireframe Variant](docs/screenshots/wireframes/laptop1.png)
+![Laptop Wireframe](docs/screenshots/wireframes/wireframes/laptop.png)
+![Laptop Wireframe Variant](docs/screenshots/wireframes/wireframes/laptop0.png)
+![Laptop Wireframe Variant](docs/screenshots/wireframes/wireframes/laptop1.png)
 
 ### Desktop
-![Desktop Wireframe](docs/screenshots/wireframes/desktop.png)
-![Desktop Wireframe Variant](docs/screenshots/wireframes/desktop0.png)
-![Desktop Wireframe Variant](docs/screenshots/wireframes/desktop1.png)
+![Desktop Wireframe](docs/screenshots/wireframes/wireframes/desktop.png)
+![Desktop Wireframe Variant](docs/screenshots/wireframes/wireframes/desktop0.png)
+![Desktop Wireframe Variant](docs/screenshots/wireframes/wireframes/desktop1.png)
 
 ### Group Concepts
-![Group Layout](docs/screenshots/wireframes/group.png)
-![Group Layout Variant](docs/screenshots/wireframes/group0.png)
-![Group Layout Variant](docs/screenshots/wireframes/group1.png)
-![Group Layout Variant](docs/screenshots/wireframes/group2.png)
+![Group Layout](docs/screenshots/wireframes/wireframes/group.png)
+![Group Layout Variant](docs/screenshots/wireframes/wireframes/group0.png)
+![Group Layout Variant](docs/screenshots/wireframes/wireframes/group1.png)
+![Group Layout Variant](docs/screenshots/wireframes/wireframes/group2.png)
 
 
 
