@@ -854,13 +854,13 @@ Screenshots are stored in `docs/screenshots/`:
 ![Product Created Confirmation](docs/screenshots/07-product-created-confirmation.png)
 ![Product Updated Confirmation](docs/screenshots/10-product-updated-confirmation.png)
 ![Product Deleted Confirmation](docs/screenshots/12-product-deleted-confirmation.png)
-![Homepage](docs/screenshots/homepage.PNG)
-![User Registration](docs/screenshots/register0.PNG)
-![Successful Registration](docs/screenshots/successful_login.PNG)
-![Login](docs/screenshots/successful_login.PNG)
-![Logged In Homepage](docs/screenshots/loggedin.PNG)
-![Add Product](docs/screenshots/add_product.PNG)
-![Upload Product Image](docs/screenshots/upload_image.PNG)
+![Homepage](docs/screenshots/homepage.png)
+![User Registration](docs/screenshots/register0.png)
+![Successful Registration](docs/screenshots/successful_login.png)
+![Login](docs/screenshots/successful_login.png)
+![Logged In Homepage](docs/screenshots/loggedin.png)
+![Add Product](docs/screenshots/add_product.png)
+![Upload Product Image](docs/screenshots/upload_image.png)
 
 
 
