@@ -856,10 +856,9 @@ Screenshots are stored in `docs/screenshots/`:
 ![Product Deleted Confirmation](docs/screenshots/12-product-deleted-confirmation.png)
 ![Homepage](docs/screenshots/homepage.png)
 ![User Registration](docs/screenshots/register0.png)
-![Successful Registration](docs/screenshots/successful_login.png)
-![Login](docs/screenshots/successful_login.png)
+![Registration Confirmation](docs/screenshots/successful_login.png)
 ![Logged In Homepage](docs/screenshots/loggedin.png)
-![Add Product](docs/screenshots/add_product.png)
+![Create Product](docs/screenshots/add_product.png)
 ![Upload Product Image](docs/screenshots/upload_image.png)
 
 
