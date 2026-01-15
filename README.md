@@ -846,7 +846,6 @@ Screenshots
 Screenshots are stored in `docs/screenshots/`:
 ![Herokulive](docs/screenshots/herokulive.png)
 ![Homepage (Heroku)](docs/screenshots/01-homepage-heroku.png)
-![Homepage (Heroku)](docs/screenshots/homepage0.png)
 ![Registration Page](docs/screenshots/02-registration-page.png)
 ![Registration Confirmation](docs/screenshots/03-registration-confirmation.png)
 ![Login Page](docs/screenshots/04-login-page.png)
@@ -856,6 +855,7 @@ Screenshots are stored in `docs/screenshots/`:
 ![Product Updated Confirmation](docs/screenshots/10-product-updated-confirmation.png)
 ![Product Deleted Confirmation](docs/screenshots/12-product-deleted-confirmation.png)
 ![Homepage](docs/screenshots/homepage.png)
+![Homepage (Heroku)](docs/screenshots/homepage0.png)
 ![User Registration](docs/screenshots/register0.png)
 ![Registration Confirmation](docs/screenshots/successful_login.png)
 ![Logged In Homepage](docs/screenshots/loggedin.png)
