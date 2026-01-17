@@ -1,16 +1,20 @@
-{# templates/marketplace/product_list.html (or your current template file) #}
 {% extends "marketplace/base.html" %}
 {% load static %}
+{% load cloudinary_opt %}
+
+{% block extra_head %}
+<!-- Preload first carousel image (LCP candidate) -->
+<link rel="preload" as="image" href="{% static 'marketplace/slides/slide-desktop.webp' %}" fetchpriority="high">
+{% endblock %}
 
 {% block content %}
 
 <div class="hero-panel p-4 mb-4">
-  <h1 class="mb-2" style="font-weight:800;">Welcome to ItMarket</h1>
+  <h1 class="mb-2" style="font-weight:800;">Welcome to ITMarket</h1>
 
   <p class="mb-3" style="color: rgba(248,250,252,0.88);">
-    ItMarket is a focused marketplace for buying and selling modern tech—consoles, phones, tablets,
-    laptops, desktops, gaming PCs, and accessories. Create listings quickly, upload images, and help buyers
-    find what they want with clean search and clear product cards.
+    ITMarket is a focused marketplace for buying and selling modern tech—consoles, phones, tablets,
+    laptops, desktops, gaming PCs, and accessories.
   </p>
 
   <div class="row g-3">
@@ -24,10 +28,10 @@
 
     <div class="col-md-4 d-flex gap-2 justify-content-md-end align-items-start flex-wrap">
       {% if user.is_authenticated %}
-        <a class="btn btn-primary" href="{% url 'product_create' %}">Add Product</a>
+      <a class="btn btn-primary" href="{% url 'product_create' %}">Add Product</a>
       {% else %}
-        <a class="btn btn-primary" href="{% url 'register' %}">Create an account</a>
-        <a class="btn btn-outline-light" href="{% url 'login' %}">Login</a>
+      <a class="btn btn-primary" href="{% url 'register' %}">Create an account</a>
+      <a class="btn btn-outline-light" href="{% url 'login' %}">Login</a>
       {% endif %}
     </div>
   </div>
@@ -35,83 +39,90 @@
 
 <div class="carousel-frame mb-4">
   <div id="itmarketCarousel" class="carousel slide" data-bs-ride="carousel">
-
     <div class="carousel-inner">
 
+      <!-- Slide 1: eager, high priority -->
       <div class="carousel-item active">
         <div class="itmarket-carousel-image-wrapper">
           <img class="itmarket-carousel-image" alt="Desktop PC"
-               src="{% static 'marketplace/slides/slide-desktop.png' %}">
+            src="{% static 'marketplace/slides/slide-desktop.webp' %}" width="1200" height="600" loading="eager"
+            decoding="async" fetchpriority="high">
         </div>
       </div>
 
+      <!-- Remaining slides: lazy -->
       <div class="carousel-item">
         <div class="itmarket-carousel-image-wrapper">
           <img class="itmarket-carousel-image" alt="Gaming PC"
-               src="{% static 'marketplace/slides/slide-gamingpc.png' %}">
+            src="{% static 'marketplace/slides/slide-gamingpc.webp' %}" width="1200" height="600" loading="lazy"
+            decoding="async">
         </div>
       </div>
 
       <div class="carousel-item">
         <div class="itmarket-carousel-image-wrapper">
-          <img class="itmarket-carousel-image" alt="Apple iMac"
-               src="{% static 'marketplace/slides/slide-imac.png' %}">
+          <img class="itmarket-carousel-image" alt="Apple iMac" src="{% static 'marketplace/slides/slide-imac.webp' %}"
+            width="1200" height="600" loading="lazy" decoding="async">
         </div>
       </div>
 
       <div class="carousel-item">
         <div class="itmarket-carousel-image-wrapper">
-          <img class="itmarket-carousel-image" alt="iPhone"
-               src="{% static 'marketplace/slides/slide-iphone.png' %}">
+          <img class="itmarket-carousel-image" alt="iPhone" src="{% static 'marketplace/slides/slide-iphone.webp' %}"
+            width="1200" height="600" loading="lazy" decoding="async">
         </div>
       </div>
 
       <div class="carousel-item">
         <div class="itmarket-carousel-image-wrapper">
-          <img class="itmarket-carousel-image" alt="Laptop"
-               src="{% static 'marketplace/slides/slide-laptop.png' %}">
+          <img class="itmarket-carousel-image" alt="Laptop" src="{% static 'marketplace/slides/slide-laptop.webp' %}"
+            width="1200" height="600" loading="lazy" decoding="async">
         </div>
       </div>
 
       <div class="carousel-item">
         <div class="itmarket-carousel-image-wrapper">
-          <img class="itmarket-carousel-image" alt="Meta Quest"
-               src="{% static 'marketplace/slides/slide-meta.png' %}">
+          <img class="itmarket-carousel-image" alt="Meta Quest" src="{% static 'marketplace/slides/slide-meta.webp' %}"
+            width="1200" height="600" loading="lazy" decoding="async">
         </div>
       </div>
 
       <div class="carousel-item">
         <div class="itmarket-carousel-image-wrapper">
           <img class="itmarket-carousel-image" alt="PlayStation 5"
-               src="{% static 'marketplace/slides/slide-playstation.png' %}">
+            src="{% static 'marketplace/slides/slide-playstation.webp' %}" width="1200" height="600" loading="lazy"
+            decoding="async">
         </div>
       </div>
 
       <div class="carousel-item">
         <div class="itmarket-carousel-image-wrapper">
           <img class="itmarket-carousel-image" alt="Samsung Galaxy"
-               src="{% static 'marketplace/slides/slide-samsung.png' %}">
+            src="{% static 'marketplace/slides/slide-samsung.webp' %}" width="1200" height="600" loading="lazy"
+            decoding="async">
         </div>
       </div>
 
       <div class="carousel-item">
         <div class="itmarket-carousel-image-wrapper">
-          <img class="itmarket-carousel-image" alt="Tablet"
-               src="{% static 'marketplace/slides/slide-tablet.png' %}">
+          <img class="itmarket-carousel-image" alt="Tablet" src="{% static 'marketplace/slides/slide-tablet.webp' %}"
+            width="1200" height="600" loading="lazy" decoding="async">
         </div>
       </div>
 
       <div class="carousel-item">
         <div class="itmarket-carousel-image-wrapper">
           <img class="itmarket-carousel-image" alt="Xbox One S"
-               src="{% static 'marketplace/slides/slide-xboxones.png' %}">
+            src="{% static 'marketplace/slides/slide-xboxones.webp' %}" width="1200" height="600" loading="lazy"
+            decoding="async">
         </div>
       </div>
 
       <div class="carousel-item">
         <div class="itmarket-carousel-image-wrapper">
           <img class="itmarket-carousel-image" alt="Xbox Series X"
-               src="{% static 'marketplace/slides/slide-xboxseries.png' %}">
+            src="{% static 'marketplace/slides/slide-xboxseries.webp' %}" width="1200" height="600" loading="lazy"
+            decoding="async">
         </div>
       </div>
 
@@ -126,17 +137,16 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
-
   </div>
 </div>
 
 <form method="get" class="mb-4">
   <div class="input-group">
     <input type="text" class="form-control" name="q" value="{{ q }}"
-           placeholder="Search products (title, description, category, seller)…">
+      placeholder="Search products (title, description, category, seller)…">
     <button class="btn btn-outline-light" type="submit">Search</button>
     {% if q %}
-      <a class="btn btn-outline-light" href="{% url 'product_list' %}">Clear</a>
+    <a class="btn btn-outline-light" href="{% url 'product_list' %}">Clear</a>
     {% endif %}
   </div>
 </form>
@@ -144,67 +154,67 @@
 <div class="d-flex justify-content-between align-items-center mb-3">
   <h2 class="mb-0">Product Listings</h2>
   {% if user.is_authenticated %}
-    <a class="btn btn-primary" href="{% url 'product_create' %}">Add Product</a>
+  <a class="btn btn-primary" href="{% url 'product_create' %}">Add Product</a>
   {% endif %}
 </div>
 
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
   {% for product in products %}
-    <div class="col">
-      <div class="card h-100">
-        <div class="card-body">
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
 
-          {% if product.category %}
-            <span class="badge bg-info mb-2">{{ product.category.name }}</span>
-          {% endif %}
+        {% if product.category %}
+        <span class="badge bg-info mb-2">{{ product.category.name }}</span>
+        {% endif %}
 
-          {% with img=product.display_image %}
-            {% if img %}
-              <img src="{{ img.image.url }}" class="product-img mb-3"
-                   alt="{{ img.alt_text|default:product.title }}">
-            {% else %}
-              <div class="product-img mb-3 d-flex align-items-center justify-content-center"
-                   style="color: rgba(248,250,252,0.70);">
-                No image uploaded yet
-              </div>
-            {% endif %}
-          {% endwith %}
-
-          <div class="card-title mb-2 fw-semibold" style="font-size: 1.1rem;">
-            {{ product.title }}
-          </div>
-
-
-          <p class="card-text mb-3">
-            {{ product.description|truncatechars:120 }}
-          </p>
-
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="fw-bold">£{{ product.price }}</div>
-            <div class="text-muted" style="font-size:0.95rem;">
-              by <strong style="color: rgba(248,250,252,0.90);">{{ product.owner.username }}</strong>
-            </div>
-          </div>
-
-          {% if user.is_authenticated and user == product.owner %}
-            <hr style="border-color: rgba(248,250,252,0.14);">
-            <div class="d-flex gap-2 flex-wrap">
-              <a class="btn btn-sm btn-outline-light" href="{% url 'product_update' product.pk %}">Edit</a>
-              <a class="btn btn-sm btn-outline-danger" href="{% url 'product_delete' product.pk %}">Delete</a>
-              <a class="btn btn-sm btn-outline-success" href="{% url 'product_add_image' product.pk %}">Add Image</a>
-            </div>
-          {% endif %}
-
+        {% with img=product.display_image %}
+        {% if img %}
+        {# Cloudinary optimized derivative: small card-sized #}
+        <img src="{{ img.image.url|cld_transform:'f_auto,q_auto,w_600,c_limit' }}" class="product-img mb-3"
+          alt="{{ img.alt_text|default:product.title }}" width="600" height="400" loading="lazy" decoding="async">
+        {% else %}
+        <div class="product-img mb-3 d-flex align-items-center justify-content-center"
+          style="color: rgba(248,250,252,0.70);">
+          No image uploaded yet
         </div>
+        {% endif %}
+        {% endwith %}
+
+        <div class="card-title mb-2 fw-semibold" style="font-size: 1.1rem;">
+          {{ product.title }}
+        </div>
+
+        <p class="card-text mb-3">
+          {{ product.description|truncatechars:120 }}
+        </p>
+
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="fw-bold">£{{ product.price }}</div>
+          <div class="text-muted" style="font-size:0.95rem;">
+            by <strong style="color: rgba(248,250,252,0.90);">{{ product.owner.username }}</strong>
+          </div>
+        </div>
+
+        {% if user.is_authenticated and user == product.owner %}
+        <hr style="border-color: rgba(248,250,252,0.14);">
+        <div class="d-flex gap-2 flex-wrap">
+          <a class="btn btn-sm btn-outline-light" href="{% url 'product_update' product.pk %}">Edit</a>
+          <a class="btn btn-sm btn-outline-danger" href="{% url 'product_delete' product.pk %}">Delete</a>
+          <a class="btn btn-sm btn-outline-success" href="{% url 'product_add_image' product.pk %}">Add Image</a>
+        </div>
+        {% endif %}
+
       </div>
     </div>
+  </div>
   {% empty %}
-    <p style="color: rgba(248,250,252,0.78);">
-      No products found{% if q %} for “{{ q }}”{% endif %}.
-      {% if user.is_authenticated %}
-        Use “Add Product” to create one.
-      {% endif %}
-    </p>
+  <p style="color: rgba(248,250,252,0.78);">
+    No products found{% if q %} for “{{ q }}”{% endif %}.
+    {% if user.is_authenticated %}
+    Use “Add Product” to create one.
+    {% endif %}
+  </p>
   {% endfor %}
 </div>
 
