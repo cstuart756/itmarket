@@ -877,6 +877,11 @@ Screenshots are stored in `docs/screenshots/`:
 ![Upload Product Image](docs/screenshots/upload_image.png)
 ![Product Listed](docs/screenshots/product-listed.png)
 ![Image Loaded](docs/screenshots/image-loaded.png)
+![Homepage1](docs/screenshots/homepage1.png)
+![Homepage2](docs/screenshots/homepage2.png)
+![Lighthouse-desktop](docs/screenshots/lighthouse-desktop.png)
+![Lighthouse-mobile](docs/screenshots/lighthouse-mobile.png)
+
 
 
 
