@@ -1,4 +1,4 @@
-:root{
+:root {
   --bg: #0f172a;
   --surface: #111827;
   --card: #1e293b;
@@ -8,20 +8,26 @@
   --brand-purple: #7c3aed;
   --accent-green: #22c55e;
 
-  --outline: rgba(248,250,252,0.14);
-  --outline-strong: rgba(248,250,252,0.22);
-  --shadow: 0 14px 34px rgba(0,0,0,0.35);
+  --outline: rgba(248, 250, 252, 0.14);
+  --outline-strong: rgba(248, 250, 252, 0.22);
+  --shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
 }
 
-html, body { height: 100%; }
+html,
+body {
+  height: 100%;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--bg);
   color: var(--text);
 }
 
-/* Rotating watermark logo */
-body::before{
+/* Rotating watermark logo
+   NOTE: This URL is relative to site.css's location.
+   Ensure itmarketlogo.svg sits in the same folder as this CSS file. */
+body::before {
   content: "";
   position: fixed;
   inset: -25%;
@@ -36,86 +42,117 @@ body::before{
 }
 
 @keyframes itmarketSpin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.navbar { background-color: var(--brand-purple); }
+.navbar {
+  background-color: var(--brand-purple);
+}
 
 .page-shell {
-  background: rgba(15,23,42,0.25);
-  border: 1px solid rgba(248,250,252,0.06);
+  background: rgba(15, 23, 42, 0.25);
+  border: 1px solid rgba(248, 250, 252, 0.06);
   border-radius: 16px;
   padding: 18px;
   backdrop-filter: blur(6px);
 }
 
-.hero-panel{
-  border: 1px solid rgba(248,250,252,0.14);
-  background: rgba(2,6,23,0.35);
+.hero-panel {
+  border: 1px solid rgba(248, 250, 252, 0.14);
+  background: rgba(2, 6, 23, 0.35);
   border-radius: 18px;
 }
 
 .card {
-  background: rgba(30,41,59,0.92);
+  background: rgba(30, 41, 59, 0.92);
   border: 1px solid var(--outline-strong);
   color: var(--text);
   box-shadow: var(--shadow);
 }
 
-.card-title { color: var(--text); font-weight: 700; }
-.card-text { color: rgba(248,250,252,0.90); }
-.text-muted { color: rgba(203,213,225,0.85) !important; }
+.card-title {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.card-text {
+  color: rgba(248, 250, 252, 0.90);
+}
+
+.text-muted {
+  color: rgba(203, 213, 225, 0.85) !important;
+}
 
 .product-img {
   width: 100%;
   height: 190px;
   object-fit: cover;
   border-radius: 14px;
-  border: 1px solid rgba(248,250,252,0.18);
-  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(248, 250, 252, 0.18);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .badge.bg-info {
-  background-color: rgba(96,165,250,0.22) !important;
+  background-color: rgba(96, 165, 250, 0.22) !important;
   color: #e0f2fe !important;
-  border: 1px solid rgba(96,165,250,0.40);
+  border: 1px solid rgba(96, 165, 250, 0.40);
 }
 
 .btn-primary {
   background-color: var(--accent-green);
   border: none;
 }
-.btn-primary:hover { filter: brightness(0.95); }
+
+.btn-primary:hover {
+  filter: brightness(0.95);
+}
 
 .btn-outline-light {
-  border-color: rgba(248,250,252,0.35);
+  border-color: rgba(248, 250, 252, 0.35);
   color: var(--text);
 }
-.btn-outline-light:hover { background: rgba(248,250,252,0.10); }
+
+.btn-outline-light:hover {
+  background: rgba(248, 250, 252, 0.10);
+}
 
 .btn-outline-success {
-  border-color: rgba(34,197,94,0.65);
-  color: rgba(248,250,252,0.92);
+  border-color: rgba(34, 197, 94, 0.65);
+  color: rgba(248, 250, 252, 0.92);
 }
-.btn-outline-success:hover { background: rgba(34,197,94,0.18); }
 
-.form-control, .form-select {
-  background-color: rgba(2,6,23,0.45);
-  border: 1px solid rgba(248,250,252,0.18);
+.btn-outline-success:hover {
+  background: rgba(34, 197, 94, 0.18);
+}
+
+.form-control,
+.form-select {
+  background-color: rgba(2, 6, 23, 0.45);
+  border: 1px solid rgba(248, 250, 252, 0.18);
   color: var(--text);
 }
-.form-control::placeholder { color: rgba(203,213,225,0.78); }
-.form-control:focus, .form-select:focus {
-  box-shadow: 0 0 0 0.2rem rgba(34,197,94,0.15);
-  border-color: rgba(34,197,94,0.55);
+
+.form-control::placeholder {
+  color: rgba(203, 213, 225, 0.78);
 }
 
-.carousel-frame{
+.form-control:focus,
+.form-select:focus {
+  box-shadow: 0 0 0 0.2rem rgba(34, 197, 94, 0.15);
+  border-color: rgba(34, 197, 94, 0.55);
+}
+
+.carousel-frame {
   border-radius: 18px;
   overflow: hidden;
-  border: 1px solid rgba(248,250,252,0.14);
-  background: rgba(2,6,23,0.25);
+  border: 1px solid rgba(248, 250, 252, 0.14);
+  background: rgba(2, 6, 23, 0.25);
 }
 
 /* =========================
@@ -123,79 +160,94 @@ body::before{
    ========================= */
 
 /* Fixed-height "window" to make all slides uniform */
-.itmarket-carousel-image-wrapper{
+.itmarket-carousel-image-wrapper {
   width: 100%;
-  height: 320px; /* desktop default */
+  height: 320px;
+  /* desktop default */
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: rgba(248,250,252,0.06);
+  background: rgba(248, 250, 252, 0.06);
 }
 
-/* Uniform image sizing without distortion */
-.itmarket-carousel-image{
+/* IMPORTANT:
+   Use cover to avoid letterboxing and keep the “short” look you liked.
+   This matches the product card image style. */
+.itmarket-carousel-image {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* change to cover if you want cropping */
+  object-fit: cover;
+  /* was contain */
+  object-position: center;
   display: block;
 }
 
 /* Responsive heights */
-@media (max-width: 992px){
-  .itmarket-carousel-image-wrapper{ height: 260px; }
+@media (max-width: 992px) {
+  .itmarket-carousel-image-wrapper {
+    height: 260px;
+  }
 }
 
-@media (max-width: 576px){
-  .itmarket-carousel-image-wrapper{ height: 210px; }
+@media (max-width: 576px) {
+  .itmarket-carousel-image-wrapper {
+    height: 210px;
+  }
 }
 
 .site-footer {
   margin-top: 40px;
   padding: 18px 0;
-  border-top: 1px solid rgba(248,250,252,0.10);
-  color: rgba(248,250,252,0.75);
+  border-top: 1px solid rgba(248, 250, 252, 0.10);
+  color: rgba(248, 250, 252, 0.75);
 }
+
 .site-footer a {
-  color: rgba(248,250,252,0.85);
+  color: rgba(248, 250, 252, 0.85);
   text-decoration: none;
 }
-.site-footer a:hover { text-decoration: underline; }
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
 
 /* Auth pages */
-.auth-wrap{
+.auth-wrap {
   max-width: 520px;
   margin: 0 auto;
 }
 
-.auth-card{
-  background: rgba(30,41,59,0.92);
-  border: 1px solid rgba(248,250,252,0.22);
+.auth-card {
+  background: rgba(30, 41, 59, 0.92);
+  border: 1px solid rgba(248, 250, 252, 0.22);
   border-radius: 18px;
-  box-shadow: 0 14px 34px rgba(0,0,0,0.35);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
   padding: 22px;
 }
 
-.auth-card h2{ font-weight: 800; }
-
-.auth-card .helptext,
-.auth-card ul{
-  color: rgba(203,213,225,0.85);
+.auth-card h2 {
+  font-weight: 800;
 }
 
-.auth-card label{
+.auth-card .helptext,
+.auth-card ul {
+  color: rgba(203, 213, 225, 0.85);
+}
+
+.auth-card label {
   display: block;
   margin-top: 10px;
   margin-bottom: 6px;
-  color: rgba(248,250,252,0.92);
+  color: rgba(248, 250, 252, 0.92);
   font-weight: 600;
 }
 
-.auth-card input{
+.auth-card input {
   width: 100%;
   padding: 10px 12px;
   border-radius: 12px;
-  background: rgba(2,6,23,0.45);
-  border: 1px solid rgba(248,250,252,0.18);
+  background: rgba(2, 6, 23, 0.45);
+  border: 1px solid rgba(248, 250, 252, 0.18);
   color: #f8fafc;
 }
