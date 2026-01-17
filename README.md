@@ -875,6 +875,9 @@ Screenshots are stored in `docs/screenshots/`:
 ![Logged In Homepage](docs/screenshots/loggedin.png)
 ![Create Product](docs/screenshots/add_product.png)
 ![Upload Product Image](docs/screenshots/upload_image.png)
+![Product Listed](docs/screenshots/product-listed.png)
+![Image Loaded](docs/screenshots/image-loaded.png)
+
 
 
 
