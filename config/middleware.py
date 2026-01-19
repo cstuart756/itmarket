@@ -1,8 +1,9 @@
-# config/middleware.py
 class SecurityHeadersMiddleware:
     """
-    Minimal security headers including CSP.
-    Adjust domains as needed if you add analytics/CDNs.
+    Adds additional security headers to every response.
+
+    Django can also set many of these via settings. This middleware is a simple,
+    explicit place to enforce baseline headers for beginners.
     """
 
     def __init__(self, get_response):
@@ -11,20 +12,13 @@ class SecurityHeadersMiddleware:
     def __call__(self, request):
         response = self.get_response(request)
 
-        # CSP: keep it simple but effective
-        csp = (
-            "default-src 'self'; "
-            "img-src 'self' data: https:; "
-            "script-src 'self' https://cdn.jsdelivr.net; "
-            "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; "
-            "font-src 'self' https://fonts.gstatic.com; "
-            "connect-src 'self'; "
-            "base-uri 'self'; "
-            "frame-ancestors 'none'; "
-            "object-src 'none'; "
-        )
-        response["Content-Security-Policy"] = csp
+        # Prevent MIME sniffing
+        response.setdefault("X-Content-Type-Options", "nosniff")
 
-        # These complement CSP
-        response["Permissions-Policy"] = "geolocation=(), microphone=(), camera=()"
+        # Clickjacking protection (also set by X_FRAME_OPTIONS in settings)
+        response.setdefault("X-Frame-Options", "DENY")
+
+        # Referrer policy
+        response.setdefault("Referrer-Policy", "strict-origin-when-cross-origin")
+
         return response
