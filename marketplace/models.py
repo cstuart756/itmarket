@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxLengthValidator
@@ -15,6 +17,7 @@ class Category(models.Model):
         ordering = ("name",)
 
     def save(self, *args, **kwargs):
+        # Ensure slug is set on first save
         if not self.slug:
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
@@ -24,7 +27,7 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    MAX_DESCRIPTION_LENGTH = 500  # Adjust if you prefer e.g. 300, 800, 1000
+    MAX_DESCRIPTION_LENGTH = 500
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="products")
     category = models.ForeignKey(
@@ -38,18 +41,21 @@ class Product(models.Model):
     description = models.TextField(
         validators=[MaxLengthValidator(MAX_DESCRIPTION_LENGTH)]
     )
+
+    # Validation (admin/forms/API): disallow negative values
     price = models.DecimalField(
         max_digits=10,
         decimal_places=2,
-        validators=[MinValueValidator(0)],
+        validators=[MinValueValidator(Decimal("0.00"))],
     )
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ("-created_at",)
         constraints = [
-            # DB-level rule: price cannot be negative
+            # Database-level rule: price cannot be negative
             models.CheckConstraint(
                 check=Q(price__gte=0),
                 name="product_price_gte_0",
@@ -70,8 +76,16 @@ class Product(models.Model):
 
 
 class ProductImage(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="images")
-    uploaded_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="uploaded_images")
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        related_name="images",
+    )
+    uploaded_by = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="uploaded_images",
+    )
     image = CloudinaryField("image")
     alt_text = models.CharField(max_length=125, blank=True)
     is_primary = models.BooleanField(default=False)
