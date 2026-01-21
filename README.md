@@ -308,428 +308,152 @@ Epics
 
     Documentation & Evidence
 
-ITMarket — Full User Story Catalogue (MoSCoW)
+User Stories (MoSCoW Prioritisation)
+The ITMarket platform was developed using a user-centred Agile approach. Requirements were captured as user stories and prioritised using the MoSCoW framework to define scope and delivery order.
+________________________________________
 MUST HAVE — Core Marketplace Platform (Delivered Scope)
-
-These stories define the minimum viable product (MVP) and were fully implemented.
-
-Epic: User Authentication & Security
+These stories define the Minimum Viable Product (MVP) and were fully implemented.
+Authentication & Security
 US-M1 — User Registration
-
 As a visitor
 I want to create an account
 So that I can access marketplace features
-
 Acceptance Criteria
-
-Registration form available
-
-User account created securely
-
-Validation errors shown clearly
-
-Success confirmation message displayed
-
+•	Registration form available
+•	User account created securely
+•	Validation errors shown clearly
+•	Success confirmation message displayed
+________________________________________
 US-M2 — User Login
-
 As a registered user
 I want to log in to my account
 So that I can access protected functionality
-
 Acceptance Criteria
-
-Login page available
-
-Credentials validated securely
-
-Error messages for invalid login
-
-Login state reflected in UI
-
-US-M3 — User Logout
-
-As a logged-in user
-I want to log out of my account
-So that my session is securely terminated
-
-Acceptance Criteria
-
-Logout button visible when logged in
-
-Session ends securely
-
-User redirected to homepage
-
-US-M4 — Login State Visibility
-
-As a user
-I want to see my login status
-So that I understand my session state
-
-Acceptance Criteria
-
-Navbar updates based on login state
-
-Username shown when logged in
-
-Login/Register hidden for authenticated users
-
-US-M5 — Access Control
-
-As a user
-I want protected pages to require authentication
-So that unauthorised access is prevented
-
-Acceptance Criteria
-
-login_required enforced on protected views
-
-Redirect to login when unauthenticated
-
-Access denied for unauthorised users
-
-Epic: Marketplace Product Management (CRUD)
+•	Login page available
+•	Credentials validated securely
+•	Error messages for invalid login
+•	Login state reflected in UI
+________________________________________
+Marketplace Product Management (CRUD)
 US-M6 — View Products
-
 As a visitor
 I want to browse marketplace products
 So that I can explore available listings
-
 Acceptance Criteria
-
-Product list loads successfully
-
-Card layout displays product details
-
-Responsive across devices
-
+•	Product list loads successfully
+•	Responsive card layout
+•	Product details displayed clearly
+________________________________________
 US-M7 — Create Product
-
 As a logged-in user
 I want to create a product listing
 So that I can sell items
-
 Acceptance Criteria
-
-Product creation form available
-
-Validation enforced
-
-Only authenticated users can create
-
-Success message displayed
-
+•	Product creation form available
+•	Only authenticated users can create
+•	Validation enforced
+•	Success message displayed
+________________________________________
 US-M8 — Update Product
-
 As a product owner
 I want to edit my product listing
 So that I can update its details
-
 Acceptance Criteria
-
-Only owner can edit
-
-Form pre-filled with product data
-
-Validation applied
-
-Success message displayed
-
+•	Only owner can edit
+•	Form pre-filled with product data
+•	Validation applied
+•	Success message displayed
+________________________________________
 US-M9 — Delete Product
-
 As a product owner
 I want to delete my product listing
 So that I can remove unwanted items
-
 Acceptance Criteria
-
-Only owner can delete
-
-Confirmation page displayed
-
-Product removed from database
-
-Success message displayed
-
-US-M10 — Ownership Enforcement
-
-As a user
-I want my products protected from other users
-So that no one else can modify them
-
-Acceptance Criteria
-
-Edit/Delete buttons hidden for non-owners
-
-Server-side ownership checks enforced
-
-Unauthorized access blocked
-
-Epic: Media Uploads (Cloudinary)
+•	Only owner can delete
+•	Confirmation page displayed
+•	Product removed from database
+•	Success message displayed
+________________________________________
+Media Uploads (Cloudinary)
 US-M11 — Upload Product Images
-
 As a product owner
 I want to upload images for my product
 So that buyers can see what I am selling
-
 Acceptance Criteria
-
-Image upload form available
-
-Images stored via Cloudinary
-
-Image displayed on product card
-
-Validation applied
-
+•	Image upload form available
+•	Images stored via Cloudinary
+•	Image displayed on product card
+________________________________________
 US-M12 — Primary Product Image
-
 As a product owner
 I want to set a primary image
 So that my product has a main display image
-
 Acceptance Criteria
-
-Only one primary image per product
-
-New primary image replaces old one
-
-Primary image shown on product card
-
-US-M13 — Delete Product Images
-
-As a product owner
-I want to delete product images
-So that I can remove unwanted media
-
-Acceptance Criteria
-
-Only owners can delete images
-
-Delete confirmation page
-
-Image removed from Cloudinary
-
-Success message displayed
-
-Epic: Notifications & Feedback
-US-M14 — User Feedback Messages
-
-As a user
-I want confirmation messages after actions
-So that I know my actions were successful
-
-Acceptance Criteria
-
-Messages shown for:
-
-Registration
-
-Login
-
-Product create/update/delete
-
-Image upload/delete
-
-Messages styled clearly
-
-Epic: Deployment & Security
-US-M15 — Secure Production Deployment
-
-As a project owner
-I want the application deployed securely
-So that users can access it safely
-
-Acceptance Criteria
-
-Heroku deployment successful
-
-PostgreSQL database configured
-
-DEBUG=False in production
-
-Secrets stored in environment variables
-
-US-M16 — Production Parity
-
-As a project owner
-I want production to match development
-So that users experience consistent behaviour
-
-Acceptance Criteria
-
-Same features locally and in production
-
-Auth works in production
-
-Image uploads work in production
-
-Epic: Usability & Responsiveness
-US-M17 — Responsive UI
-
-As a user
-I want the site to work on all devices
-So that I can use it on mobile, tablet, or desktop
-
-Acceptance Criteria
-
-Responsive Bootstrap grid
-
-Mobile navigation
-
-Touch-friendly UI
-
-US-M18 — Accessible UI
-
-As a user
-I want an accessible interface
-So that users with disabilities can use the site
-
-Acceptance Criteria
-
-Semantic HTML
-
-Accessible forms
-
-Alt text on images
-
-WCAG colour contrast
-
-Epic: Testing & Quality Assurance
-US-M19 — Automated Test Coverage
-
-As a project owner
-I want automated tests for core functionality
-So that regressions are prevented
-
-Acceptance Criteria
-
-CRUD tests
-
-Ownership security tests
-
-Message tests
-
-Image logic tests
-
-US-M20 — Quality Assurance Verification
-
-As a project owner
-I want to verify all features before submission
-So that the system meets assessment requirements
-
-Acceptance Criteria
-
-All tests pass
-
-Production site verified
-
-README complete
-
-Screenshots captured
-
+•	Only one primary image per product
+•	New primary replaces old
+•	Primary shown on product card
+________________________________________
 SHOULD HAVE — Enhancements (Next Iteration)
+These stories improve usability but are not required for MVP.
 US-S1 — Product Search
-
 As a user
 I want to search for products
 So that I can find items quickly
-
+________________________________________
 US-S2 — Product Filtering
-
 As a user
 I want to filter by category and price
 So that I can narrow my results
-
+________________________________________
 US-S3 — Product Sorting
-
 As a user
 I want to sort by price or newest
 So that I can browse efficiently
-
+________________________________________
 US-S4 — User Profile Page
-
 As a user
 I want a profile page
 So that I can view my products
-
-US-S5 — Admin Moderation Dashboard
-
-As an admin
-I want to moderate listings
-So that inappropriate content can be removed
-
+________________________________________
 COULD HAVE — Future Expansion
+These stories represent future platform growth.
 US-C1 — Product Reviews
-
 As a buyer
 I want to leave reviews
 So that sellers build reputation
-
+________________________________________
 US-C2 — Wishlist
-
 As a user
 I want to save favourite products
 So that I can view them later
-
+________________________________________
 US-C3 — Messaging Between Users
-
 As a buyer
 I want to message sellers
 So that I can ask questions
-
-US-C4 — Notifications by Email
-
+________________________________________
+US-C4 — Email Notifications
 As a user
 I want email notifications
 So that I don’t miss updates
-
-US-C5 — API Endpoints
-
-As a developer
-I want an API
-So that mobile apps can be built
-
+________________________________________
 WON'T HAVE — Out of Scope (Current Project)
-US-W1 — Payments & Checkout
+These features were deliberately excluded due to scope, security, and compliance constraints.
+•	Online payments & checkout
+•	Shipping integration
+•	Real-time chat
+•	Mobile app
+•	AI recommendations
+________________________________________
+Agile Tracking
+User stories were managed using GitHub Issues and tracked via a Kanban board:
+Backlog → To Do → In Progress → Done
+Each story is traceable to:
+•	Git commits
+•	Test cases
+•	Deployed features
 
-As a buyer
-I want to pay for products online
-So that I can complete purchases
 
-(Out of scope due to security, compliance, and time constraints)
-
-US-W2 — Shipping & Order Tracking
-
-As a buyer
-I want shipping integration
-So that I can track deliveries
-
-(Out of scope — marketplace only, not full e-commerce)
-
-US-W3 — Mobile App
-
-As a user
-I want a mobile app
-So that I can browse on my phone
-
-(Out of scope — web application only)
-
-US-W4 — Real-Time Chat
-
-As a buyer
-I want real-time chat
-So that I can talk instantly to sellers
-
-(Out of scope — requires WebSocket infrastructure)
-
-US-W5 — AI Recommendations
-
-As a buyer
-I want product recommendations
-So that I discover new items
-
-(Out of scope — requires data pipeline and ML model)
 
 Kanban Tracking
 
