@@ -636,6 +636,173 @@ Future Enhancements
     Email notifications
 
     User messaging system
+    Future Features & Roadmap
+
+The current version of ITMarket delivers a complete and fully functional marketplace MVP. However, due to time, scope, and security constraints associated with an academic capstone project, several enhancements were intentionally deferred for future iterations.
+
+The following roadmap outlines the planned evolution of the platform.
+
+Phase 1 — Marketplace Enhancements (Short Term)
+
+These features improve usability and browsing efficiency and would be prioritised immediately in the next release cycle.
+
+Advanced Search & Filtering
+
+Filter by category, price range, and seller
+
+Keyword-based full-text search
+
+Combined filters (e.g. phones under £500)
+
+Product Sorting
+
+Sort by newest
+
+Sort by price (low → high / high → low)
+
+Sort by popularity (views or saves)
+
+Image Gallery & Carousel
+
+Multiple product images per listing
+
+Lightbox image viewer
+
+Swipe support on mobile
+
+User Profile Page
+
+Public seller profiles
+
+View all products by a seller
+
+Profile bio and avatar
+
+Phase 2 — Community & Engagement Features (Mid Term)
+
+These features build trust, reputation, and interaction between users.
+
+Product Reviews & Ratings
+
+Buyers can leave star ratings and written reviews
+
+Seller reputation score
+
+Review moderation
+
+Wishlist / Favourites
+
+Save products for later
+
+Personal wishlist page
+
+Wishlist notifications for price changes
+
+User Messaging System
+
+Secure buyer ↔ seller messaging
+
+Message history
+
+Notification badges
+
+Phase 3 — Platform Expansion (Long Term)
+
+These features turn ITMarket into a fully-fledged commercial marketplace platform.
+
+Admin Moderation Dashboard
+
+Approve or remove listings
+
+Moderate user-generated content
+
+Flag inappropriate products
+
+Email Notifications
+
+Registration confirmation
+
+New messages
+
+Product updates
+
+Wishlist price alerts
+
+REST API
+
+Public API endpoints
+
+Mobile app integration
+
+Third-party integrations
+
+Out of Scope for Current Release
+
+The following features were intentionally excluded due to security, compliance, and infrastructure requirements that exceed the scope of an academic project:
+
+Payments & Checkout
+
+Requires PCI compliance
+
+Fraud protection
+
+Refund handling
+
+Tax handling
+
+Shipping & Order Tracking
+
+Carrier integration
+
+Label generation
+
+Delivery tracking
+
+Real-Time Chat
+
+WebSocket infrastructure
+
+Message delivery guarantees
+
+Online/offline presence
+
+Mobile App
+
+iOS and Android builds
+
+Push notifications
+
+App store deployment
+
+Technical Roadmap
+
+Future technical improvements include:
+
+Redis caching for product listings
+
+Background jobs (Celery)
+
+Image optimisation pipeline
+
+Rate limiting and abuse prevention
+
+Advanced logging and monitoring
+
+GDPR data export and deletion tools
+
+Product Vision
+
+The long-term vision for ITMarket is to evolve into a secure, scalable, and community-driven technology marketplace with:
+
+Trust-based seller reputation
+
+Rich product discovery
+
+Real-time communication
+
+Mobile-first experience
+
+API-driven ecosystem
 
 References
 
