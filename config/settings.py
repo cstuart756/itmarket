@@ -1,12 +1,11 @@
+# config/settings.py
+from __future__ import annotations
+
 import os
 from pathlib import Path
+from typing import List
 
-from dotenv import load_dotenv
 import dj_database_url
-
-# Load environment variables from .env for local development.
-# On Heroku, Config Vars override these values.
-load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -14,32 +13,36 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ---------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------
-def _env_bool(name: str, default: str = "False") -> bool:
-    return os.getenv(name, default).strip().lower() in {"1", "true", "yes", "on"}
+def env(name: str, default: str = "") -> str:
+    return os.getenv(name, default)
 
 
-def _env_list(name: str, default: str = "") -> list[str]:
-    raw = os.getenv(name, default).strip()
+def env_bool(name: str, default: str = "False") -> bool:
+    return env(name, default).strip().lower() in {"1", "true", "yes", "on"}
+
+
+def env_list(name: str, default: str = "") -> List[str]:
+    raw = env(name, default).strip()
     if not raw:
         return []
     return [item.strip() for item in raw.split(",") if item.strip()]
 
 
 # ---------------------------------------------------------
-# Core settings
+# Core
 # ---------------------------------------------------------
-SECRET_KEY = os.getenv("SECRET_KEY", "dev-only-insecure-secret-key")
-DEBUG = _env_bool("DEBUG", "False")
+SECRET_KEY = env("SECRET_KEY", "dev-only-insecure-secret-key")
+DEBUG = env_bool("DEBUG", "False")
 
-# Keep safe defaults; allow override with ALLOWED_HOSTS env var
-# Example: ALLOWED_HOSTS=itmarket-app-xxxx.herokuapp.com,example.com
-_default_hosts = ["localhost", "127.0.0.1", ".herokuapp.com"]
-ALLOWED_HOSTS = _env_list("ALLOWED_HOSTS")
+# Hosts / CSRF
+# On Heroku: set ALLOWED_HOSTS=itmarket-app-xxxx.herokuapp.com
+ALLOWED_HOSTS = env_list("ALLOWED_HOSTS")
 if not ALLOWED_HOSTS:
-    ALLOWED_HOSTS = _default_hosts
+    # safe defaults (works locally + any herokuapp.com subdomain)
+    ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".herokuapp.com", "https://itmarket-app-208bb526531b.herokuapp.com"]
 
-# Example: CSRF_TRUSTED_ORIGINS=https://itmarket-app-xxxx.herokuapp.com,https://example.com
-CSRF_TRUSTED_ORIGINS = _env_list("CSRF_TRUSTED_ORIGINS")
+# On Heroku: set CSRF_TRUSTED_ORIGINS=https://itmarket-app-xxxx.herokuapp.com
+CSRF_TRUSTED_ORIGINS = env_list("CSRF_TRUSTED_ORIGINS")
 
 
 # ---------------------------------------------------------
@@ -54,14 +57,15 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
-    # Third party
-    "cloudinary",
-    "cloudinary_storage",
-
     # Local apps
     "accounts",
     "marketplace",
 ]
+
+# Enable Cloudinary apps only if configured
+CLOUDINARY_URL = env("CLOUDINARY_URL", "").strip()
+if CLOUDINARY_URL:
+    INSTALLED_APPS += ["cloudinary", "cloudinary_storage"]
 
 
 # ---------------------------------------------------------
@@ -72,9 +76,6 @@ MIDDLEWARE = [
     # WhiteNoise must be directly after SecurityMiddleware
     "whitenoise.middleware.WhiteNoiseMiddleware",
 
-    # Your custom middleware (must exist at config/middleware.py)
-    "config.middleware.SecurityHeadersMiddleware",
-
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -83,9 +84,13 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+# IMPORTANT:
+# If you have a custom middleware, only enable it if the module exists:
+# MIDDLEWARE.insert(2, "config.middleware.SecurityHeadersMiddleware")
+
 
 # ---------------------------------------------------------
-# URL / Templates / WSGI / ASGI
+# URLs / Templates / WSGI
 # ---------------------------------------------------------
 ROOT_URLCONF = "config.urls"
 
@@ -106,25 +111,14 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "config.wsgi.application"
-ASGI_APPLICATION = "config.asgi.application"
 
 
 # ---------------------------------------------------------
 # Database
 # ---------------------------------------------------------
-DATABASE_URL = os.getenv("DATABASE_URL", "").strip()
-
-if DATABASE_URL:
-    DATABASES = {
-        "default": dj_database_url.config(
-            default=DATABASE_URL,
-            conn_max_age=int(os.getenv("DB_CONN_MAX_AGE", "600")),
-            ssl_require=True,
-        )
-    }
-else:
-    # For beginners: allow SQLite locally ONLY when DEBUG=True.
-    # On Heroku, DEBUG must be False and DATABASE_URL must be set.
+DATABASE_URL = env("DATABASE_URL", "").strip()
+if not DATABASE_URL:
+    # allow SQLite locally if DEBUG=True
     if DEBUG:
         DATABASES = {
             "default": {
@@ -133,9 +127,15 @@ else:
             }
         }
     else:
-        raise RuntimeError(
-            "DATABASE_URL is not set. On Heroku you must set DATABASE_URL to your Neon Postgres URL."
+        raise RuntimeError("DATABASE_URL is not set (required in production).")
+else:
+    DATABASES = {
+        "default": dj_database_url.parse(
+            DATABASE_URL,
+            conn_max_age=int(env("DB_CONN_MAX_AGE", "600")),
+            ssl_require=True,  # good default for managed Postgres
         )
+    }
 
 
 # ---------------------------------------------------------
@@ -153,7 +153,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # ---------------------------------------------------------
 LANGUAGE_CODE = "en-us"
-TIME_ZONE = os.getenv("TIME_ZONE", "UTC")
+TIME_ZONE = env("TIME_ZONE", "UTC")
 USE_I18N = True
 USE_TZ = True
 
@@ -163,16 +163,26 @@ USE_TZ = True
 # ---------------------------------------------------------
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_DIRS = [BASE_DIR / "static"]
 
-# Cloudinary for media, WhiteNoise for static
+# If you have local static assets in ./static
+STATICFILES_DIRS = [BASE_DIR / "static"] if (BASE_DIR / "static").exists() else []
+
+# WhiteNoise storage for static
 STORAGES = {
-    "default": {"BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage"},
     "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
 }
 
-CLOUDINARY_STORAGE = {"CLOUDINARY_URL": os.getenv("CLOUDINARY_URL", "")}
+# Media storage: Cloudinary if configured, else local filesystem
 MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
+if CLOUDINARY_URL:
+    # Cloudinary for media
+    STORAGES["default"] = {"BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage"}
+    CLOUDINARY_STORAGE = {"CLOUDINARY_URL": CLOUDINARY_URL}
+else:
+    # Local filesystem for media (useful for local dev)
+    STORAGES["default"] = {"BACKEND": "django.core.files.storage.FileSystemStorage"}
 
 
 # ---------------------------------------------------------
@@ -190,25 +200,45 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 # ---------------------------------------------------------
+# Logging (so 500s show tracebacks on Heroku)
+# ---------------------------------------------------------
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {"class": "logging.StreamHandler"},
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "INFO",
+    },
+    "loggers": {
+        "django.request": {
+            "handlers": ["console"],
+            "level": "ERROR",
+            "propagate": False,
+        },
+    },
+}
+
+
+# ---------------------------------------------------------
 # Production security (Heroku)
 # ---------------------------------------------------------
 if not DEBUG:
-    # Heroku runs behind a reverse proxy which sets X-Forwarded-Proto
+    # Heroku is behind a reverse proxy (needed for correct scheme detection)
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
-    # Redirect HTTP to HTTPS
-    SECURE_SSL_REDIRECT = _env_bool("SECURE_SSL_REDIRECT", "True")
+    # Redirect HTTP -> HTTPS (can disable via config var if needed)
+    SECURE_SSL_REDIRECT = env_bool("SECURE_SSL_REDIRECT", "True")
 
-    # Secure cookies
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
 
-    # HSTS
-    SECURE_HSTS_SECONDS = int(os.getenv("SECURE_HSTS_SECONDS", "31536000"))
+    SECURE_HSTS_SECONDS = int(env("SECURE_HSTS_SECONDS", "31536000"))
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
 
-    # Other headers
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
     X_FRAME_OPTIONS = "DENY"
