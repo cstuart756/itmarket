@@ -14,18 +14,20 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# config/urls.py
 from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
 
-    # Django built-in auth views: /accounts/login/, /accounts/logout/, etc.
-    path("accounts/", include("django.contrib.auth.urls")),
-
-    # Your accounts app (register)
+    # IMPORTANT: put your accounts URLs first so your logout overrides the default.
     path("accounts/", include("accounts.urls")),
+
+    # Django built-in auth views: login, password reset, etc.
+    path("accounts/", include("django.contrib.auth.urls")),
 
     # Marketplace
     path("", include("marketplace.urls")),
 ]
+

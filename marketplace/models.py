@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator, MaxLengthValidator
+from django.db.models import Q
 from django.utils.text import slugify
 from cloudinary.models import CloudinaryField
 
@@ -22,6 +24,8 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+    MAX_DESCRIPTION_LENGTH = 500  # Adjust if you prefer e.g. 300, 800, 1000
+
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="products")
     category = models.ForeignKey(
         Category,
@@ -31,13 +35,26 @@ class Product(models.Model):
         related_name="products",
     )
     title = models.CharField(max_length=120)
-    description = models.TextField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    description = models.TextField(
+        validators=[MaxLengthValidator(MAX_DESCRIPTION_LENGTH)]
+    )
+    price = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        validators=[MinValueValidator(0)],
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ("-created_at",)
+        constraints = [
+            # DB-level rule: price cannot be negative
+            models.CheckConstraint(
+                check=Q(price__gte=0),
+                name="product_price_gte_0",
+            ),
+        ]
 
     @property
     def primary_image(self):
