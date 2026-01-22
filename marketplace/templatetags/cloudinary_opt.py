@@ -1,3 +1,4 @@
+# marketplace/templatetags/cloudinary_opt.py
 from __future__ import annotations
 
 from django import template
@@ -17,12 +18,19 @@ def _force_https(url: str) -> str:
 @register.filter(name="cld_transform")
 def cld_transform(url: str, transform: str = "") -> str:
     """
-    Apply Cloudinary transformation to a Cloudinary delivery URL and ALWAYS return HTTPS.
+    Apply a Cloudinary transformation to a Cloudinary delivery URL and ALWAYS return HTTPS.
+    Works for:
+      - http://res.cloudinary.com/...
+      - //res.cloudinary.com/...
+      - https://res.cloudinary.com/...
     """
     url = _force_https(url)
     transform = (transform or "").strip().strip("/")
 
-    if not url or not transform:
+    if not url:
+        return ""
+
+    if not transform:
         return _force_https(url)
 
     marker = "/upload/"

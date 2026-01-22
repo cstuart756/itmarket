@@ -95,14 +95,18 @@ class ProductImage(models.Model):
         """
         Always return an https URL for the Cloudinary asset.
         Prefer secure_url; fallback to upgrading url.
+        Handles http:// and protocol-relative // URLs.
         """
         secure = getattr(self.image, "secure_url", None)
         if isinstance(secure, str) and secure:
             return secure
 
-        url = getattr(self.image, "url", "")
-        if isinstance(url, str) and url.startswith("http://"):
+        url = (getattr(self.image, "url", "") or "").strip()
+
+        if url.startswith("http://"):
             return "https://" + url[len("http://"):]
+        if url.startswith("//"):
+            return "https:" + url
         return url
 
     def __str__(self):

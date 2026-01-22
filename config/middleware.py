@@ -1,9 +1,7 @@
+# config/middleware.py
 class SecurityHeadersMiddleware:
     """
     Adds additional security headers to every response.
-
-    Django can also set many of these via settings. This middleware is a simple,
-    explicit place to enforce baseline headers for beginners.
     """
 
     def __init__(self, get_response):
@@ -15,10 +13,16 @@ class SecurityHeadersMiddleware:
         # Prevent MIME sniffing
         response.setdefault("X-Content-Type-Options", "nosniff")
 
-        # Clickjacking protection (also set by X_FRAME_OPTIONS in settings)
+        # Clickjacking protection
         response.setdefault("X-Frame-Options", "DENY")
 
         # Referrer policy
         response.setdefault("Referrer-Policy", "strict-origin-when-cross-origin")
+
+        # Optional CSP: upgrades accidental http:// and blocks mixed content
+        response.setdefault(
+            "Content-Security-Policy",
+            "upgrade-insecure-requests; block-all-mixed-content"
+        )
 
         return response

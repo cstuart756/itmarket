@@ -170,12 +170,12 @@
         <img src="{{ img.image_secure_url|cld_transform:'f_auto,q_auto,w_600,c_limit' }}" class="product-img mb-3"
           alt="{{ img.alt_text|default:product.title }}" width="600" height="400" loading="lazy" decoding="async">
         {% else %}
-        <div class="product-img mb-3 d-flex align-items-center justify-content-center"
-          style="color: rgba(248,250,252,0.70);">
+        <div class="product-img mb-3 d-flex align-items-center justify-content-center" style="color: rgba(248,250,252,0.70);">
           No image uploaded yet
         </div>
         {% endif %}
         {% endwith %}
+
 
         <div class="card-title mb-2 fw-semibold" style="font-size: 1.1rem;">
           {{ product.title }}
