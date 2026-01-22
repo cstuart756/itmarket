@@ -32,17 +32,30 @@ def env_list(name: str, default: str = "") -> List[str]:
 # Core
 # ---------------------------------------------------------
 SECRET_KEY = env("SECRET_KEY", "dev-only-insecure-secret-key")
-DEBUG = env_bool("DEBUG", "False")
+
+# For local development, default DEBUG to True unless explicitly set.
+# On Heroku, you should set DEBUG=False.
+DEBUG = env_bool("DEBUG", "True")
 
 # Hosts / CSRF
 # On Heroku: set ALLOWED_HOSTS=itmarket-app-xxxx.herokuapp.com
 ALLOWED_HOSTS = env_list("ALLOWED_HOSTS")
 if not ALLOWED_HOSTS:
-    # safe defaults (works locally + any herokuapp.com subdomain)
-    ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".herokuapp.com", "https://itmarket-app-208bb526531b.herokuapp.com"]
+    # Hostnames only (no scheme, no path)
+    ALLOWED_HOSTS = [
+        "localhost",
+        "127.0.0.1",
+        ".herokuapp.com",
+        "itmarket-app-208bb526531b.herokuapp.com",
+    ]
 
 # On Heroku: set CSRF_TRUSTED_ORIGINS=https://itmarket-app-xxxx.herokuapp.com
 CSRF_TRUSTED_ORIGINS = env_list("CSRF_TRUSTED_ORIGINS")
+if not CSRF_TRUSTED_ORIGINS and DEBUG:
+    CSRF_TRUSTED_ORIGINS = [
+        "http://localhost",
+        "http://127.0.0.1",
+    ]
 
 
 # ---------------------------------------------------------
@@ -56,7 +69,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     # Local apps
     "accounts",
     "marketplace",
@@ -75,7 +87,6 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     # WhiteNoise must be directly after SecurityMiddleware
     "whitenoise.middleware.WhiteNoiseMiddleware",
-
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -84,8 +95,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-# IMPORTANT:
-# If you have a custom middleware, only enable it if the module exists:
+# If you have custom middleware, only enable if the module exists:
 # MIDDLEWARE.insert(2, "config.middleware.SecurityHeadersMiddleware")
 
 
@@ -117,9 +127,19 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # ---------------------------------------------------------
 DATABASE_URL = env("DATABASE_URL", "").strip()
-if not DATABASE_URL:
-    # allow SQLite locally if DEBUG=True
+
+if DATABASE_URL:
+    DATABASES = {
+        "default": dj_database_url.parse(
+            DATABASE_URL,
+            conn_max_age=int(env("DB_CONN_MAX_AGE", "600")),
+            # Require SSL in production; allow local Postgres without SSL when DEBUG=True
+            ssl_require=not DEBUG,
+        )
+    }
+else:
     if DEBUG:
+        # Local dev default
         DATABASES = {
             "default": {
                 "ENGINE": "django.db.backends.sqlite3",
@@ -128,14 +148,6 @@ if not DATABASE_URL:
         }
     else:
         raise RuntimeError("DATABASE_URL is not set (required in production).")
-else:
-    DATABASES = {
-        "default": dj_database_url.parse(
-            DATABASE_URL,
-            conn_max_age=int(env("DB_CONN_MAX_AGE", "600")),
-            ssl_require=True,  # good default for managed Postgres
-        )
-    }
 
 
 # ---------------------------------------------------------
@@ -177,11 +189,9 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 if CLOUDINARY_URL:
-    # Cloudinary for media
     STORAGES["default"] = {"BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage"}
     CLOUDINARY_STORAGE = {"CLOUDINARY_URL": CLOUDINARY_URL}
 else:
-    # Local filesystem for media (useful for local dev)
     STORAGES["default"] = {"BACKEND": "django.core.files.storage.FileSystemStorage"}
 
 
@@ -205,13 +215,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
-    "handlers": {
-        "console": {"class": "logging.StreamHandler"},
-    },
-    "root": {
-        "handlers": ["console"],
-        "level": "INFO",
-    },
+    "handlers": {"console": {"class": "logging.StreamHandler"}},
+    "root": {"handlers": ["console"], "level": "INFO"},
     "loggers": {
         "django.request": {
             "handlers": ["console"],
