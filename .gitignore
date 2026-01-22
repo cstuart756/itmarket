@@ -5,3 +5,10 @@ db.sqlite3
 
 .env
 
+
+# Python cache / bytecode
+__pycache__/
+*.pyc
+
+# Local scan artifacts
+mixed-content-report.csv

@@ -33,15 +33,10 @@ def env_list(name: str, default: str = "") -> List[str]:
 # ---------------------------------------------------------
 SECRET_KEY = env("SECRET_KEY", "dev-only-insecure-secret-key")
 
-# For local development, default DEBUG to True unless explicitly set.
-# On Heroku, you should set DEBUG=False.
 DEBUG = env_bool("DEBUG", "True")
 
-# Hosts / CSRF
-# On Heroku: set ALLOWED_HOSTS=itmarket-app-xxxx.herokuapp.com
 ALLOWED_HOSTS = env_list("ALLOWED_HOSTS")
 if not ALLOWED_HOSTS:
-    # Hostnames only (no scheme, no path)
     ALLOWED_HOSTS = [
         "localhost",
         "127.0.0.1",
@@ -49,7 +44,6 @@ if not ALLOWED_HOSTS:
         "itmarket-app-208bb526531b.herokuapp.com",
     ]
 
-# On Heroku: set CSRF_TRUSTED_ORIGINS=https://itmarket-app-xxxx.herokuapp.com
 CSRF_TRUSTED_ORIGINS = env_list("CSRF_TRUSTED_ORIGINS")
 if not CSRF_TRUSTED_ORIGINS and DEBUG:
     CSRF_TRUSTED_ORIGINS = [
@@ -62,14 +56,12 @@ if not CSRF_TRUSTED_ORIGINS and DEBUG:
 # Applications
 # ---------------------------------------------------------
 INSTALLED_APPS = [
-    # Django
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # Local apps
     "accounts",
     "marketplace",
 ]
@@ -85,7 +77,6 @@ if CLOUDINARY_URL:
 # ---------------------------------------------------------
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    # WhiteNoise must be directly after SecurityMiddleware
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -94,9 +85,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-
-# If you have custom middleware, only enable if the module exists:
-# MIDDLEWARE.insert(2, "config.middleware.SecurityHeadersMiddleware")
 
 
 # ---------------------------------------------------------
@@ -133,13 +121,11 @@ if DATABASE_URL:
         "default": dj_database_url.parse(
             DATABASE_URL,
             conn_max_age=int(env("DB_CONN_MAX_AGE", "600")),
-            # Require SSL in production; allow local Postgres without SSL when DEBUG=True
             ssl_require=not DEBUG,
         )
     }
 else:
     if DEBUG:
-        # Local dev default
         DATABASES = {
             "default": {
                 "ENGINE": "django.db.backends.sqlite3",
@@ -175,24 +161,30 @@ USE_TZ = True
 # ---------------------------------------------------------
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
-
-# If you have local static assets in ./static
 STATICFILES_DIRS = [BASE_DIR / "static"] if (BASE_DIR / "static").exists() else []
 
-# WhiteNoise storage for static
 STORAGES = {
     "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
 }
 
-# Media storage: Cloudinary if configured, else local filesystem
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 if CLOUDINARY_URL:
+    # Force Cloudinary to generate HTTPS delivery URLs (prevents mixed content).
+    CLOUDINARY_STORAGE = {
+        "CLOUDINARY_URL": CLOUDINARY_URL,
+        "SECURE": True,
+    }
+
+    # Configure the Cloudinary SDK as well (belt-and-braces).
+    import cloudinary
+    cloudinary.config(secure=True)
+
     STORAGES["default"] = {"BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage"}
-    CLOUDINARY_STORAGE = {"CLOUDINARY_URL": CLOUDINARY_URL}
 else:
     STORAGES["default"] = {"BACKEND": "django.core.files.storage.FileSystemStorage"}
+
 
 
 # ---------------------------------------------------------
@@ -210,7 +202,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 # ---------------------------------------------------------
-# Logging (so 500s show tracebacks on Heroku)
+# Logging
 # ---------------------------------------------------------
 LOGGING = {
     "version": 1,
@@ -231,10 +223,7 @@ LOGGING = {
 # Production security (Heroku)
 # ---------------------------------------------------------
 if not DEBUG:
-    # Heroku is behind a reverse proxy (needed for correct scheme detection)
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-
-    # Redirect HTTP -> HTTPS (can disable via config var if needed)
     SECURE_SSL_REDIRECT = env_bool("SECURE_SSL_REDIRECT", "True")
 
     SESSION_COOKIE_SECURE = True

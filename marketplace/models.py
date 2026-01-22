@@ -17,7 +17,6 @@ class Category(models.Model):
         ordering = ("name",)
 
     def save(self, *args, **kwargs):
-        # Ensure slug is set on first save
         if not self.slug:
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
@@ -42,7 +41,6 @@ class Product(models.Model):
         validators=[MaxLengthValidator(MAX_DESCRIPTION_LENGTH)]
     )
 
-    # Validation (admin/forms/API): disallow negative values
     price = models.DecimalField(
         max_digits=10,
         decimal_places=2,
@@ -55,7 +53,6 @@ class Product(models.Model):
     class Meta:
         ordering = ("-created_at",)
         constraints = [
-            # Database-level rule: price cannot be negative
             models.CheckConstraint(
                 check=Q(price__gte=0),
                 name="product_price_gte_0",
@@ -64,7 +61,6 @@ class Product(models.Model):
 
     @property
     def primary_image(self):
-        # ProductImage ordering: (-is_primary, -created_at)
         return self.images.first()
 
     @property
@@ -93,6 +89,21 @@ class ProductImage(models.Model):
 
     class Meta:
         ordering = ("-is_primary", "-created_at")
+
+    @property
+    def image_secure_url(self) -> str:
+        """
+        Always return an https URL for the Cloudinary asset.
+        Prefer secure_url; fallback to upgrading url.
+        """
+        secure = getattr(self.image, "secure_url", None)
+        if isinstance(secure, str) and secure:
+            return secure
+
+        url = getattr(self.image, "url", "")
+        if isinstance(url, str) and url.startswith("http://"):
+            return "https://" + url[len("http://"):]
+        return url
 
     def __str__(self):
         return f"Image for {self.product.title}"

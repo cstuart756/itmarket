@@ -3,7 +3,6 @@
 {% load cloudinary_opt %}
 
 {% block extra_head %}
-<!-- Preload first carousel image (LCP candidate) -->
 <link rel="preload" as="image" href="{% static 'marketplace/slides/slide-desktop.webp' %}" fetchpriority="high">
 {% endblock %}
 
@@ -41,7 +40,6 @@
   <div id="itmarketCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
 
-      <!-- Slide 1: eager, high priority -->
       <div class="carousel-item active">
         <div class="itmarket-carousel-image-wrapper">
           <img class="itmarket-carousel-image" alt="Desktop PC"
@@ -50,7 +48,6 @@
         </div>
       </div>
 
-      <!-- Remaining slides: lazy -->
       <div class="carousel-item">
         <div class="itmarket-carousel-image-wrapper">
           <img class="itmarket-carousel-image" alt="Gaming PC"
@@ -170,8 +167,7 @@
 
         {% with img=product.display_image %}
         {% if img %}
-        {# Cloudinary optimized derivative: small card-sized #}
-        <img src="{{ img.image.url|cld_transform:'f_auto,q_auto,w_600,c_limit' }}" class="product-img mb-3"
+        <img src="{{ img.image_secure_url|cld_transform:'f_auto,q_auto,w_600,c_limit' }}" class="product-img mb-3"
           alt="{{ img.alt_text|default:product.title }}" width="600" height="400" loading="lazy" decoding="async">
         {% else %}
         <div class="product-img mb-3 d-flex align-items-center justify-content-center"
