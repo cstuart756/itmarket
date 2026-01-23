@@ -295,37 +295,115 @@ Database Persistence
     Used persistent database storage
 
 Result: Product and image data persists across dyno restarts.
-Screenshots
-1. Homepage (Deployed on Heroku)
+## Screenshots
+
+The following screenshots provide comprehensive visual evidence of application functionality, authentication flows, product management (CRUD), administration, validation, responsiveness, deployment, and performance auditing.
+
+---
+
+### Application Interface & Deployment
+
 <img src="docs/screenshots/01-homepage-heroku.png" style="max-width:900px;width:100%;height:auto;">
-2. User Registration Page
-<img src="docs/screenshots/02-registration-page.png" style="max-width:720px;width:100%;height:auto;">
-3. Registration Confirmation
+<img src="docs/screenshots/homepage.png" style="max-width:900px;width:100%;height:auto;">
+<img src="docs/screenshots/homepage0.png" style="max-width:900px;width:100%;height:auto;">
+<img src="docs/screenshots/homepage1.png" style="max-width:900px;width:100%;height:auto;">
+<img src="docs/screenshots/homepage2.png" style="max-width:900px;width:100%;height:auto;">
+<img src="docs/screenshots/home_desktop.png" style="max-width:900px;width:100%;height:auto;">
+<img src="docs/screenshots/herokulive.png" style="max-width:900px;width:100%;height:auto;">
+<img src="docs/screenshots/view-deployed.png" style="max-width:900px;width:100%;height:auto;">
+
+---
+
+### Authentication & User Access
+
+<img src="docs/screenshots/register.png" style="max-width:720px;width:100%;height:auto;">
+<img src="docs/screenshots/register0.png" style="max-width:720px;width:100%;height:auto;">
 <img src="docs/screenshots/03-registration-confirmation.png" style="max-width:720px;width:100%;height:auto;">
-4. Login Page
-<img src="docs/screenshots/04-login-page.png" style="max-width:720px;width:100%;height:auto;">
-5. Logged-In User State
+
+<img src="docs/screenshots/login.png" style="max-width:720px;width:100%;height:auto;">
+<img src="docs/screenshots/enter-correct-username.png" style="max-width:720px;width:100%;height:auto;">
+<img src="docs/screenshots/successful_login.png" style="max-width:720px;width:100%;height:auto;">
+
 <img src="docs/screenshots/05-logged-in-state.png" style="max-width:900px;width:100%;height:auto;">
-6. Create Product Form
-<img src="docs/screenshots/06-create-product.png" style="max-width:720px;width:100%;height:auto;">
-7. Product Created Confirmation
-<img src="docs/screenshots/07-product-created-confirmation.png" style="max-width:720px;width:100%;height:auto;">
-8. Product Listed Successfully
+<img src="docs/screenshots/loggedin.png" style="max-width:900px;width:100%;height:auto;">
+
+---
+
+### Product Management (CRUD)
+
+#### Create Product
+
+<img src="docs/screenshots/create_product.png" style="max-width:720px;width:100%;height:auto;">
+<img src="docs/screenshots/06-create-product0.png" style="max-width:720px;width:100%;height:auto;">
+<img src="docs/screenshots/add_product.png" style="max-width:720px;width:100%;height:auto;">
+
+#### Edit & Update Product
+
+<img src="docs/screenshots/09-edit-product.png" style="max-width:720px;width:100%;height:auto;">
+<img src="docs/screenshots/update_product.png" style="max-width:720px;width:100%;height:auto;">
+
+#### Delete Product
+
+<img src="docs/screenshots/delete_product.png" style="max-width:720px;width:100%;height:auto;">
+
+#### Product Listing & Media
+
 <img src="docs/screenshots/product-listed.png" style="max-width:900px;width:100%;height:auto;">
-9. Product Image Loaded Correctly
 <img src="docs/screenshots/image-loaded.png" style="max-width:900px;width:100%;height:auto;">
-Lighthouse Performance Audits
-10. Lighthouse Audit – Desktop (High Performance)
+<img src="docs/screenshots/upload_image.png" style="max-width:900px;width:100%;height:auto;">
+<img src="docs/screenshots/upload-backup.png" style="max-width:900px;width:100%;height:auto;">
+
+---
+
+### Administration (Django Admin)
+
+<img src="docs/screenshots/itmarket-admin.png" style="max-width:900px;width:100%;height:auto;">
+<img src="docs/screenshots/itmarket-djangoadmin-add-category.png" style="max-width:900px;width:100%;height:auto;">
+<img src="docs/screenshots/admin-local.png" style="max-width:900px;width:100%;height:auto;">
+<img src="docs/screenshots/admin-local0.png" style="max-width:900px;width:100%;height:auto;">
+
+---
+
+### Responsive Design Testing
+
+<img src="docs/screenshots/mobile.png" style="max-width:360px;width:100%;height:auto;">
+<img src="docs/screenshots/mobile0.png" style="max-width:360px;width:100%;height:auto;">
+
+<img src="docs/screenshots/tablet.png" style="max-width:600px;width:100%;height:auto;">
+<img src="docs/screenshots/tablet0.png" style="max-width:600px;width:100%;height:auto;">
+
+<img src="docs/screenshots/laptop.png" style="max-width:720px;width:100%;height:auto;">
+<img src="docs/screenshots/laptop0.png" style="max-width:720px;width:100%;height:auto;">
+
+<img src="docs/screenshots/desktop.png" style="max-width:900px;width:100%;height:auto;">
+
+---
+
+### Code Validation
+
+<img src="docs/screenshots/html-validation.png" style="max-width:900px;width:100%;height:auto;">
+<img src="docs/screenshots/css-validation.png" style="max-width:900px;width:100%;height:auto;">
+<img src="docs/screenshots/javascript-validation.png" style="max-width:900px;width:100%;height:auto;">
+
+---
+
+## Lighthouse Performance Audits
+
+<img src="docs/screenshots/lighthouse-desktop.png" style="max-width:900px;width:100%;height:auto;">
 <img src="docs/screenshots/lighthouse-desktop0.png" style="max-width:900px;width:100%;height:auto;">
-11. Lighthouse Audit – Desktop (Optimised State)
 <img src="docs/screenshots/lighthouse-desktop1.png" style="max-width:900px;width:100%;height:auto;">
-12. Lighthouse Audit – Mobile
+
+<img src="docs/screenshots/lighthouse-mobile.png" style="max-width:900px;width:100%;height:auto;">
 <img src="docs/screenshots/lighthouse-mobile0.png" style="max-width:900px;width:100%;height:auto;">
-13. Lighthouse Audit – Mobile (Alternative Run)
 <img src="docs/screenshots/lighthouse-mobile1.png" style="max-width:900px;width:100%;height:auto;">
-Project Management
-14. GitHub Kanban Backlog (Agile Project Management)
+
+---
+
+## Project Management (Agile Workflow)
+
 <img src="docs/screenshots/kanban.png" style="max-width:900px;width:100%;height:auto;">
+
+
 
 
 AI-Assisted Development
