@@ -109,27 +109,58 @@ ________________________________________
 
 ## Wireframes
 
-Wireframes are stored in `docs/screenshots/wireframes/`.
+---
 
-### Mobile
-<img src="docs/screenshots/wireframes/mobile.png" style="max-width:360px;width:100%;height:auto;">
-<img src="docs/screenshots/wireframes/mobile0.png" style="max-width:360px;width:100%;height:auto;">
-<img src="docs/screenshots/wireframes/mobile1.png" style="max-width:360px;width:100%;height:auto;">
+### Planning & User Flow Groups
 
-### Tablet
-<img src="docs/screenshots/wireframes/tablet.png" style="max-width:600px;width:100%;height:auto;">
-<img src="docs/screenshots/wireframes/tablet0.png" style="max-width:600px;width:100%;height:auto;">
-<img src="docs/screenshots/wireframes/tablet1.png" style="max-width:600px;width:100%;height:auto;">
+![](docs/screenshots/wireframes/group.png)
 
-### Laptop
-<img src="docs/screenshots/wireframes/laptop.png" style="max-width:720px;width:100%;height:auto;">
-<img src="docs/screenshots/wireframes/laptop0.png" style="max-width:720px;width:100%;height:auto;">
-<img src="docs/screenshots/wireframes/laptop1.png" style="max-width:720px;width:100%;height:auto;">
+![](docs/screenshots/wireframes/group0.png)
 
-### Desktop
-<img src="docs/screenshots/wireframes/desktop.png" style="max-width:900px;width:100%;height:auto;">
-<img src="docs/screenshots/wireframes/desktop0.png" style="max-width:900px;width:100%;height:auto;">
-<img src="docs/screenshots/wireframes/desktop1.png" style="max-width:900px;width:100%;height:auto;">
+![](docs/screenshots/wireframes/group1.png)
+
+![](docs/screenshots/wireframes/group2.png)
+
+---
+
+### Mobile Wireframes
+
+![](docs/screenshots/wireframes/mobile.png)
+
+![](docs/screenshots/wireframes/mobile0.png)
+
+![](docs/screenshots/wireframes/mobile1.png)
+
+---
+
+### Tablet Wireframes
+
+![](docs/screenshots/wireframes/tablet.png)
+
+![](docs/screenshots/wireframes/tablet0.png)
+
+![](docs/screenshots/wireframes/tablet1.png)
+
+---
+
+### Laptop Wireframes
+
+![](docs/screenshots/wireframes/laptop.png)
+
+![](docs/screenshots/wireframes/laptop0.png)
+
+![](docs/screenshots/wireframes/laptop1.png)
+
+---
+
+### Desktop Wireframes
+
+![](docs/screenshots/wireframes/desktop.png)
+
+![](docs/screenshots/wireframes/desktop0.png)
+
+![](docs/screenshots/wireframes/desktop1.png)
+
 
 ________________________________________
 
