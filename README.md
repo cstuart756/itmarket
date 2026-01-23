@@ -545,33 +545,43 @@ AI tools were used to:
 
 All AI outputs were reviewed, adapted, and validated via automated tests and manual verification.
 
-Future Features & Roadmap
-Phase 1 — Marketplace Enhancements (Short Term)
+## 🚀 Future Enhancements & Roadmap
 
-• Advanced search & filtering (category, price range)
-• Sorting (newest, price)
-• Image gallery & lightbox
-• User profile pages
+---
 
-Phase 2 — Community & Engagement (Mid Term)
+### 🔹 **Phase 1 — Marketplace Enhancements (Short Term)**
 
-• Reviews & ratings
-• Wishlist / favourites
-• Buyer ↔ seller messaging
+- 🔍 Advanced search and filtering (category, price range)
+- ↕️ Sorting options (newest, price)
+- 🖼️ Image gallery with lightbox support
+- 👤 User profile pages
 
-Phase 3 — Platform Expansion (Long Term)
+---
 
-• Admin moderation dashboard
-• Email notifications
-• Public REST API
+### 🔹 **Phase 2 — Community & Engagement (Mid Term)**
 
-Out of Scope (Current Release)
+- ⭐ Product reviews and ratings
+- ❤️ Wishlist / favourites functionality
+- 💬 Buyer–seller messaging system
 
-• Payments & checkout (PCI compliance)
-• Shipping & order tracking
-• Real-time chat (WebSockets)
-• Mobile app (iOS/Android)
-• AI recommendations
+---
+
+### 🔹 **Phase 3 — Platform Expansion (Long Term)**
+
+- 📊 Admin moderation and analytics dashboard
+- 📧 Email notifications for user activity
+- 🔌 Public REST API for third-party integrations
+
+---
+
+### ⛔ **Out of Scope (Current Release)**
+
+- 💳 Payments and checkout (PCI compliance requirements)
+- 🚚 Shipping and order tracking
+- ⚡ Real-time chat (WebSockets)
+- 📱 Native mobile applications (iOS / Android)
+- 🤖 AI-driven recommendations
+
 
 References
 
