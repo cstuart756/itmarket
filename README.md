@@ -295,37 +295,72 @@ Database Persistence
     Used persistent database storage
 
 Result: Product and image data persists across dyno restarts.
-Screenshots
-1. Homepage (Deployed on Heroku)
+## Screenshots
+
+The following screenshots demonstrate core application functionality, user authentication, product management workflows, and production readiness.
+
+---
+
+### Application Interface & User Flows
+
+#### 1. Homepage (Deployed on Heroku)
 <img src="docs/screenshots/01-homepage-heroku.png" style="max-width:900px;width:100%;height:auto;">
-2. User Registration Page
+
+#### 2. User Registration Page
 <img src="docs/screenshots/02-registration-page.png" style="max-width:720px;width:100%;height:auto;">
-3. Registration Confirmation
+
+#### 3. Registration Confirmation
 <img src="docs/screenshots/03-registration-confirmation.png" style="max-width:720px;width:100%;height:auto;">
-4. Login Page
+
+#### 4. Login Page
 <img src="docs/screenshots/04-login-page.png" style="max-width:720px;width:100%;height:auto;">
-5. Logged-In User State
+
+#### 5. Logged-In User State
 <img src="docs/screenshots/05-logged-in-state.png" style="max-width:900px;width:100%;height:auto;">
-6. Create Product Form
+
+---
+
+### Product Management
+
+#### 6. Create Product Form
 <img src="docs/screenshots/06-create-product.png" style="max-width:720px;width:100%;height:auto;">
-7. Product Created Confirmation
+
+#### 7. Product Created Confirmation
 <img src="docs/screenshots/07-product-created-confirmation.png" style="max-width:720px;width:100%;height:auto;">
-8. Product Listed Successfully
+
+#### 8. Product Listed Successfully
 <img src="docs/screenshots/product-listed.png" style="max-width:900px;width:100%;height:auto;">
-9. Product Image Loaded Correctly
+
+#### 9. Product Image Loaded Correctly
 <img src="docs/screenshots/image-loaded.png" style="max-width:900px;width:100%;height:auto;">
-Lighthouse Performance Audits
-10. Desktop – High Performance
+
+---
+
+## Lighthouse Performance Audits
+
+Lighthouse audits were conducted in the production environment to validate performance, accessibility, best practices, and SEO across desktop and mobile devices.
+
+#### 10. Desktop Audit – High Performance
 <img src="docs/screenshots/lighthouse-desktop0.png" style="max-width:900px;width:100%;height:auto;">
-11. Desktop – Optimised State
+
+#### 11. Desktop Audit – Optimised State
 <img src="docs/screenshots/lighthouse-desktop1.png" style="max-width:900px;width:100%;height:auto;">
-12. Mobile
+
+#### 12. Mobile Audit
 <img src="docs/screenshots/lighthouse-mobile0.png" style="max-width:900px;width:100%;height:auto;">
-13. Mobile – Alternative Run
+
+#### 13. Mobile Audit – Alternative Run
 <img src="docs/screenshots/lighthouse-mobile1.png" style="max-width:900px;width:100%;height:auto;">
-Project Management
-GitHub Kanban Board
+
+---
+
+## Project Management
+
+Agile project management was carried out using GitHub Issues and Projects, following a Kanban workflow.
+
+#### GitHub Kanban Board
 <img src="docs/screenshots/kanban.png" style="max-width:900px;width:100%;height:auto;">
+
 AI-Assisted Development
 
 AI tools were used to assist with boilerplate generation, test creation, debugging, and UX decisions.
