@@ -377,187 +377,126 @@ Result: Product and image data persists across dyno restarts.
 
 ---
 
+### Deployed Application
+
 ![](docs/screenshots/01-homepage-heroku.png)
 
----
-
-![](docs/screenshots/homepage0herokulive.png)
-
----
-
-![](docs/screenshots/homepage1.png)
-
----
-
-![](docs/screenshots/homepage2.png)
-
----
+![](docs/screenshots/herokulive.png)
 
 ![](docs/screenshots/homepage.png)
 
----
+![](docs/screenshots/homepage0.png)
 
-![](docs/screenshots/home_desktop.png)
+![](docs/screenshots/homepage1.png)
 
----
+![](docs/screenshots/homepage2.png)
 
 ![](docs/screenshots/view-deployed.png)
 
 ---
 
-![](docs/screenshots/register.png)
+### Authentication & User State
 
----
+![](docs/screenshots/02-registration-page.png)
 
 ![](docs/screenshots/register0.png)
 
----
-
 ![](docs/screenshots/03-registration-confirmation.png)
 
----
-
-![](docs/screenshots/login.png)
-
----
+![](docs/screenshots/04-login-page.png)
 
 ![](docs/screenshots/successful_login.png)
 
----
-
-![](docs/screenshots/enter-correct-username.png)
-
----
-
 ![](docs/screenshots/loggedin.png)
-
----
 
 ![](docs/screenshots/05-logged-in-state.png)
 
 ---
 
-![](docs/screenshots/create_product.png)
+### Product CRUD Workflow
 
----
-
-![](docs/screenshots/06-create-product0.png)
-
----
+![](docs/screenshots/06-create-product.png)
 
 ![](docs/screenshots/add_product.png)
 
----
+![](docs/screenshots/07-product-created-confirmation.png)
 
 ![](docs/screenshots/09-edit-product.png)
 
----
+![](docs/screenshots/10-product-updated-confirmation.png)
 
-![](docs/screenshots/update_product.png)
-
----
-
-![](docs/screenshots/delete_product.png)
-
----
+![](docs/screenshots/12-product-deleted-confirmation.png)
 
 ![](docs/screenshots/product-listed.png)
 
 ---
 
-![](docs/screenshots/upload_image.png)
+### Media Uploads
 
----
+![](docs/screenshots/upload_image.png)
 
 ![](docs/screenshots/image-loaded.png)
 
 ---
 
-![](docs/screenshots/upload-backup.png)
-
----
+### Admin & Management
 
 ![](docs/screenshots/itmarket-admin.png)
 
----
-
-![](docs/screenshots/itmarket-djangoadmin-add-category.png)
-
----
-
 ![](docs/screenshots/admin-local.png)
-
----
 
 ![](docs/screenshots/admin-local0.png)
 
 ---
 
-![](docs/screenshots/html-validation.png)
+### Validation
 
----
+![](docs/screenshots/html-validation.png)
 
 ![](docs/screenshots/css-validation.png)
 
----
-
-![](docs/screenshots/javasript-validation.png)
+![](docs/screenshots/javascript-validation.png)
 
 ---
+
+### Lighthouse Performance Audits
 
 ![](docs/screenshots/lighthouse-desktop.png)
 
----
-
 ![](docs/screenshots/lighthouse-desktop0.png)
-
----
 
 ![](docs/screenshots/lighthouse-desktop1.png)
 
----
-
 ![](docs/screenshots/lighthouse-mobile.png)
 
----
-
 ![](docs/screenshots/lighthouse-mobile0.png)
-
----
 
 ![](docs/screenshots/lighthouse-mobile1.png)
 
 ---
 
-![](docs/screenshots/mobile.png)
+### Responsive Design
 
----
+![](docs/screenshots/mobile.png)
 
 ![](docs/screenshots/mobile0.png)
 
----
-
 ![](docs/screenshots/tablet.png)
-
----
 
 ![](docs/screenshots/tablet0.png)
 
----
-
 ![](docs/screenshots/laptop.png)
-
----
 
 ![](docs/screenshots/laptop0.png)
 
----
-
-![](docs/screenshots/deskttop.png)
+![](docs/screenshots/desktop.png)
 
 ---
+
+### Project Management
 
 ![](docs/screenshots/kanban.png)
+
 
 AI-Assisted Development
 
