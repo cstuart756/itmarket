@@ -25,13 +25,17 @@
   <img src="https://img.shields.io/badge/Media-Cloudinary-3448C5?logo=cloudinary&logoColor=white">
 </p>
 
-________________________________________
+---
 
 ## Live Site (Heroku)
-https://itmarket-app-208bb526531b.herokuapp.com
+
+🔗 **https://itmarket-app-208bb526531b.herokuapp.com**
+
+---
 
 ## Repository
-https://github.com/cstuart756/itmarket
+
+🔗 **https://github.com/cstuart756/itmarket**
 
 ________________________________________
 
