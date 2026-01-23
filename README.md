@@ -350,7 +350,7 @@ Lighthouse audits were conducted in the production environment to validate perfo
 <img src="docs/screenshots/lighthouse-mobile0.png" style="max-width:900px;width:100%;height:auto;">
 
 #### 13. Mobile Audit – Alternative Run
-<img src="docs/screenshots/lighthouse-mobile1.png" style="max-width:900px;width:100%;height:auto;">
+<img src="docs/screenshots/kanban.png" style="max-width:900px;width:100%;height:auto;">
 
 ---
 
